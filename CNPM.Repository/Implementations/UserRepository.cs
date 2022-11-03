@@ -1,0 +1,199 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CNPM.Repository.Interfaces;
+using CNPM.Core.Entities;
+using Microsoft.EntityFrameworkCore;
+using CNPM.Core.Utils;
+using CNPM.Core.Models;
+
+namespace CNPM.Repository.Implementations
+{
+    public class UserRepository : IUserRepository
+    {
+        private readonly MyDbContext _dbcontext;
+      
+        public UserRepository()
+        {
+            _dbcontext = new MyDbContext();
+        }
+        public UserEntity GetUser(string userName)
+        {
+            try
+            {
+                using var dbcontext = new MyDbContext();
+                var user = new UserEntity();
+                user = dbcontext.Users.FirstOrDefault(o => o.UserName == userName && o.Delete == Constant.NOT_DELETE);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public UserEntity CreateUser(UserEntity userData)
+        {
+            try
+            {
+
+                _dbcontext.Users.Add(userData);
+
+                int number_rows = _dbcontext.SaveChanges();
+
+                if (number_rows > 0) return userData;
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public bool DeleteUser(string userName)
+        {
+            try
+            {                
+                var user = _dbcontext.Users.FirstOrDefault(o => o.UserName == userName && o.Delete == Constant.NOT_DELETE);
+
+                user.Delete = Constant.DELETE;
+
+                _dbcontext.SaveChanges();
+               
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool UpdateUser(UserEntity newUserData)
+        {
+           
+            try
+            {
+
+                var user = _dbcontext.Users.FirstOrDefault(o => o.UserName == newUserData.UserName && o.Delete == Constant.NOT_DELETE);
+
+                if (user != null)
+                {
+                    user.FirstName = newUserData.FirstName;
+                    user.LastName = newUserData.LastName;
+                    user.RoleId = newUserData.RoleId;
+                    _dbcontext.SaveChanges();
+                    return true;
+                }
+                else return false;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<RoleEntity> GetListPermissions()
+        {
+            try
+            {
+                List<RoleEntity> arr = _dbcontext.Roles.ToList();
+                return arr;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
+        public List<UserEntity> GetAllUsers()
+        {
+            try
+            {
+                List<UserEntity> arr = _dbcontext.Users.Where(o => o.Delete == Constant.NOT_DELETE).ToList();
+                return arr;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
+        public bool ChangePassWord(string userName, string newPassword)
+        {
+            try
+            {
+                var user = _dbcontext.Users.FirstOrDefault(o => o.UserName == userName && o.Delete == Constant.NOT_DELETE);
+                if (user != null)
+                {
+                    user.Password = newPassword;
+                    _dbcontext.SaveChanges();
+                    return true;
+                }
+                else return false;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool SaveToken(string userName, string accessToken)
+        {
+            try
+            {
+                var loginInfo = new LoginInfoEntity();
+                loginInfo.AccessToken = accessToken;
+                loginInfo.UserName = userName;
+                loginInfo.UpdateTime = DateTime.Now;
+                loginInfo.CreateTime = DateTime.Now;
+                loginInfo.UserCreate = userName;
+                loginInfo.UserUpdate = userName;
+                loginInfo.Delete = Constant.NOT_DELETE;
+                loginInfo.Version = 0;
+                _dbcontext.LoginInfos.Add(loginInfo);
+                _dbcontext.SaveChanges();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+           
+        }
+        public bool DeleteToken(string userName, string accessToken)
+        {
+            try
+            {
+                var loginInfo = _dbcontext.LoginInfos.FirstOrDefault(o => o.UserName == userName && o.Delete == Constant.NOT_DELETE && o.AccessToken == accessToken);
+                if (loginInfo != null)
+                {
+                    loginInfo.Delete = Constant.DELETE;
+                    loginInfo.Version++;
+                    _dbcontext.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        public bool CheckToken(string userName, string accessToken)
+        {
+            try
+            {
+                var loginInfo = _dbcontext.LoginInfos.FirstOrDefault(o => o.UserName == userName && o.Delete == Constant.NOT_DELETE && o.AccessToken == accessToken);
+                if (loginInfo != null)
+                {
+                    return loginInfo.Delete == Constant.NOT_DELETE;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+    }
+}

@@ -1,0 +1,15 @@
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\bin\Debug\net6.0\CNPM.Repository.deps.json
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\bin\Debug\net6.0\CNPM.Repository.dll
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\bin\Debug\net6.0\CNPM.Repository.pdb
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\bin\Debug\net6.0\CNPM.Core.dll
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\bin\Debug\net6.0\CNPM.Core.pdb
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\obj\Debug\net6.0\CNPM.Repository.csproj.AssemblyReference.cache
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\obj\Debug\net6.0\CNPM.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\obj\Debug\net6.0\CNPM.Repository.AssemblyInfoInputs.cache
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\obj\Debug\net6.0\CNPM.Repository.AssemblyInfo.cs
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\obj\Debug\net6.0\CNPM.Repository.csproj.CoreCompileInputs.cache
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\obj\Debug\net6.0\CNPM.Repository.csproj.CopyComplete
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\obj\Debug\net6.0\CNPM.Repository.dll
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\obj\Debug\net6.0\refint\CNPM.Repository.dll
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\obj\Debug\net6.0\CNPM.Repository.pdb
+C:\Users\bruce\OneDrive\Desktop\Nhập môn công nghệ phần mềm\project_2_backend\CNPM.Repository\obj\Debug\net6.0\ref\CNPM.Repository.dll
