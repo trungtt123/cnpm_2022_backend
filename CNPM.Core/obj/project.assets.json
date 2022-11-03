@@ -2105,11 +2105,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\CNPM.Core.csproj",
+      "projectUniqueName": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\CNPM.Core.csproj",
       "projectName": "CNPM.Core",
-      "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\CNPM.Core.csproj",
+      "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\CNPM.Core.csproj",
       "packagesPath": "C:\\Users\\bruce\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\obj\\",
+      "outputPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bruce\\AppData\\Roaming\\NuGet\\NuGet.Config",

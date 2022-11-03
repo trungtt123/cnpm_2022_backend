@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM\\CNPM.csproj": {}
+    "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM\\CNPM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\CNPM.Core.csproj": {
+    "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\CNPM.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\CNPM.Core.csproj",
+        "projectUniqueName": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\CNPM.Core.csproj",
         "projectName": "CNPM.Core",
-        "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\CNPM.Core.csproj",
+        "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\CNPM.Core.csproj",
         "packagesPath": "C:\\Users\\bruce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\obj\\",
+        "outputPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bruce\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -85,14 +85,14 @@
         }
       }
     },
-    "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Repository\\CNPM.Repository.csproj": {
+    "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Repository\\CNPM.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Repository\\CNPM.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Repository\\CNPM.Repository.csproj",
         "projectName": "CNPM.Repository",
-        "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Repository\\CNPM.Repository.csproj",
+        "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Repository\\CNPM.Repository.csproj",
         "packagesPath": "C:\\Users\\bruce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Repository\\obj\\",
+        "outputPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bruce\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -109,8 +109,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\CNPM.Core.csproj": {
-                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\CNPM.Core.csproj"
+              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\CNPM.Core.csproj": {
+                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\CNPM.Core.csproj"
               }
             }
           }
@@ -144,14 +144,14 @@
         }
       }
     },
-    "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Service\\CNPM.Service.csproj": {
+    "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Service\\CNPM.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Service\\CNPM.Service.csproj",
+        "projectUniqueName": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Service\\CNPM.Service.csproj",
         "projectName": "CNPM.Service",
-        "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Service\\CNPM.Service.csproj",
+        "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Service\\CNPM.Service.csproj",
         "packagesPath": "C:\\Users\\bruce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Service\\obj\\",
+        "outputPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bruce\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -168,11 +168,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\CNPM.Core.csproj": {
-                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\CNPM.Core.csproj"
+              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\CNPM.Core.csproj": {
+                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\CNPM.Core.csproj"
               },
-              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Repository\\CNPM.Repository.csproj": {
-                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Repository\\CNPM.Repository.csproj"
+              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Repository\\CNPM.Repository.csproj": {
+                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Repository\\CNPM.Repository.csproj"
               }
             }
           }
@@ -212,14 +212,14 @@
         }
       }
     },
-    "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM\\CNPM.csproj": {
+    "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM\\CNPM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM\\CNPM.csproj",
+        "projectUniqueName": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM\\CNPM.csproj",
         "projectName": "CNPM",
-        "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM\\CNPM.csproj",
+        "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM\\CNPM.csproj",
         "packagesPath": "C:\\Users\\bruce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM\\obj\\",
+        "outputPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bruce\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -236,14 +236,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\CNPM.Core.csproj": {
-                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Core\\CNPM.Core.csproj"
+              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\CNPM.Core.csproj": {
+                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Core\\CNPM.Core.csproj"
               },
-              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Repository\\CNPM.Repository.csproj": {
-                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Repository\\CNPM.Repository.csproj"
+              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Repository\\CNPM.Repository.csproj": {
+                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Repository\\CNPM.Repository.csproj"
               },
-              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Service\\CNPM.Service.csproj": {
-                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Service\\CNPM.Service.csproj"
+              "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Service\\CNPM.Service.csproj": {
+                "projectPath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Service\\CNPM.Service.csproj"
               }
             }
           }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0FU2BetIeQ56ZC51Rcp3UNSu+1mJkwIkQHumyLUFmhqQYeLDdSk3G6GQcFJ4Kitzw9R0pj6M5kNpINT5LHLJBA==",
+  "dgSpecHash": "IipbwYTThi32IuuTBR09MU/k10CuBbIA1osHHWCWlNsi127la27QbiWU+yycJr9XfO4orsyvWyLHaS7O/dH2vg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\project_2_backend\\CNPM.Repository\\CNPM.Repository.csproj",
+  "projectFilePath": "C:\\Users\\bruce\\OneDrive\\Desktop\\Nhập môn công nghệ phần mềm\\cnpm_2022_backend\\CNPM.Repository\\CNPM.Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bruce\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\bruce\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
