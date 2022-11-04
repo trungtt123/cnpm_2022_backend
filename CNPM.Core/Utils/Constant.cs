@@ -157,7 +157,7 @@
 
         public const string CONNECTION_STRING = @"
                 Data Source=localhost;
-                Initial Catalog=DBWAREHOUSE;
+                Initial Catalog=CNPM;
                 Integrated Security=True;
                 Connect Timeout=30;
                 Encrypt=False;

@@ -7,7 +7,7 @@ using CNPM.Service.Implementations;
 using CNPM.Repository.Interfaces;
 using CNPM.Repository.Implementations;
 using System.Text;
-using WareHouse;
+using CNPM;
 
 // InitDatabase
 InitDatabase.ResetDb();

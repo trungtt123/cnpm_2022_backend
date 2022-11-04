@@ -97,7 +97,9 @@ namespace CNPM.Service.Implementations
 
             userDto.RoleId = user.RoleId;
 
-            _userRepository.SaveToken(userLogin.UserName, tokenString);
+            var checkSaveToken = _userRepository.SaveToken(userLogin.UserName, tokenString);
+
+            if (!checkSaveToken) return null;
 
             return userDto;
         }

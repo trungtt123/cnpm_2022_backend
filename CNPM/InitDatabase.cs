@@ -4,7 +4,7 @@ using CNPM.Core.Models;
 using CNPM.Core.Entities;
 using CNPM.Core.Utils;
 
-namespace WareHouse
+namespace CNPM
 {
     
     public class InitDatabase

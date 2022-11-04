@@ -26,6 +26,6 @@ namespace CNPM.Core.Models
         public string Email { get; set; }
 
         [JsonProperty("version")]
-        public string Version { get; set; }
+        public int Version { get; set; }
     }
 }

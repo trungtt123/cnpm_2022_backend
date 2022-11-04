@@ -5,9 +5,9 @@ using CNPM.Core.Models;
 using CNPM.Core.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
-namespace WareHouse.Controllers
+namespace CNPM.Controllers.Authorize
 {
-    [VerifyRoleFilter]
+    [VerifyToken]
     [Authorize]
     [ApiController]
     [Route(Constant.API_BASE)]
@@ -18,25 +18,6 @@ namespace WareHouse.Controllers
         public UserController(IUserService userService)
         {
             _userService = userService;
-        }
-        [AllowAnonymous]
-        [HttpPost("login")]
-        public IActionResult Authenticate([FromBody] UserDto1004 userData)
-        {
-            var user = _userService.Authenticate(userData);
-
-            var response = new ResponseDto();
-
-            if (user == null)
-            {
-                response.Message = Constant.USERNAME_OR_PASSWORD_IS_INCORRECT;
-
-                return BadRequest(Helpers.SerializeObject(response));
-            }
-            response.Message = Constant.AUTHENTICATION_SUCCESSFULLY;
-            response.Data = user;
-            return Ok(Helpers.SerializeObject(response));
-
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
