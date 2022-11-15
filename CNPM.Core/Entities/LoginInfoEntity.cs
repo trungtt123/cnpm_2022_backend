@@ -9,10 +9,10 @@ namespace CNPM.Core.Entities
         [Key]
         [Required]
         public int Id { get; set; }
-        
-        [Required]
-        [Column(TypeName = "varchar(100)")]
         public string UserName { get; set; }
+
+        [ForeignKey("UserName")]
+        public UserEntity User { get; set; }
         
         [Required]
         [Column(TypeName = "varchar(400)")]

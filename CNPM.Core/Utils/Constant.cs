@@ -6,29 +6,36 @@
         public const string INVALID_USER_CREDENTIALS = "INVALID_USER_CREDENTIALS";
         public const int DELETE = 1;
         public const int NOT_DELETE = 0;
-        public const string VALID_TOKEN = "VALID_TOKEN";
-        public const string INVALID_TOKEN = "INVALID_TOKEN";
+        public const string VALID_TOKEN = "Token hợp lệ";
+        public const string INVALID_TOKEN = "Token không hợp lệ";
+        public const string DATA_UPDATED_BEFORE = "Dữ liệu bạn muốn cập nhật đã bị thay đổi bởi người khác";
 
-        public const string GET_LIST_PERMISSIONS_SUCCESSFULLY = "GET_LIST_PERMISSIONS_SUCCESSFULLY";
-        public const string GET_LIST_PERMISSIONS_FAILED = "GET_LIST_PERMISSIONS_FAILED";
+        public const string USERNAME_NOT_EXIST = "Username không tồn tại";
+        public const string INVALID_PASSWORD = "Mật khẩu không đúng";
+        public const string LOGIN_SUCCESSFULLY = "Đăng nhập thành công";
+        public const string LOGOUT_SUCCESSFULLY = "Đăng xuất thành công";
 
-        public const string DELETE_USER_SUCCESSFULLY = "DELETE_USER_SUCCESSFULLY";
-        public const string DELETE_USER_FAILED = "DELETE_USER_FAILED";
+        public const string GET_USER_SUCCESSFULLY = "Lấy thông tin user thành công";
 
-        public const string CREATE_USER_SUCCESSFULLY = "CREATE_USER_SUCCESSFULLY";
-        public const string CREATE_USER_FAILED = "CREATE_USER_FAILED";
+        public const string GET_LIST_PERMISSIONS_SUCCESSFULLY = "Lấy danh sách vai trò thành công";
+        public const string GET_LIST_PERMISSIONS_FAILED = "Lấy danh sách vai trò thất bại";
 
-        public const string UPDATE_USER_SUCCESSFULLY = "UPDATE_USER_SUCCESSFULLY";
-        public const string UPDATE_USER_FAILED = "UPDATE_USER_FAILED";
+        public const string DELETE_USER_SUCCESSFULLY = "Xóa user thành công";
+        public const string DELETE_USER_FAILED = "Xóa user thất bại";
 
-        public const string GET_USER_SUCCESSFULLY = "GET_USER_SUCCESSFULLY";
+        public const string CREATE_USER_SUCCESSFULLY = "Tạo user thành công";
+        public const string CREATE_USER_FAILED = "Tạo user thất bại";
+
+        public const string UPDATE_USER_SUCCESSFULLY = "Cập nhật thông tin người dùng thành công";
+        public const string UPDATE_USER_FAILED = "Cập nhật thông tin người dùng thất bại";
+
         public const string GET_USER_FAILED = "GET_USER_FAILED";
 
-        public const string GET_LIST_USERS_SUCCESSFULLY = "GET_LIST_USERS_SUCCESSFULLY";
-        public const string GET_LIST_USERS_FAILED = "GET_LIST_USERS_FAILED";
+        public const string GET_LIST_USERS_SUCCESSFULLY = "Lấy danh sách user thành công";
+        public const string GET_LIST_USERS_FAILED = "Lấy danh sách user thất bại";
 
-        public const string CHANGE_PASSWORD_SUCCESSFULLY = "CHANGE_PASSWORD_SUCCESSFULLY";
-        public const string CHANGE_PASSWORD_FAILED = "CHANGE_PASSWORD_FAILED";
+        public const string CHANGE_PASSWORD_SUCCESSFULLY = "Đổi mật khẩu thành công";
+        public const string CHANGE_PASSWORD_FAILED = "Đổi mật khẩu thất bại";
 
         public const string SYSTEM_EMAIL_ADDRESS = "no-reply-project-3@outlook.com";
         public const string SYSTEM_EMAIL_PASSWORD = "project3";
@@ -143,7 +150,6 @@
         public const string INVALID_INPUT = "INVALID_INPUT";
         public const string USERNAME_OR_PASSWORD_IS_INCORRECT = "USERNAME_OR_PASSWORD_IS_INCORRECT";
         public const string AUTHENTICATION_SUCCESSFULLY = "AUTHENTICATION_SUCCESSFULLY";
-        public const string LOGOUT_SUCCESSFULLY = "LOGOUT_SUCCESSFULLY";
         public const string LOGOUT_FAILED = "LOGOUT_FAILED";
         public const string DEFAULT_PASSWORD = "123456";
         public const int RANDOM_DEFAULT_PASSWORD_LENGTH = 6;

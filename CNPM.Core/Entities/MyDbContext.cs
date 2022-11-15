@@ -12,6 +12,15 @@ namespace CNPM.Core.Entities
         public DbSet<UserEntity> Users { set; get; }
         public DbSet<RoleEntity> Roles { set; get; }
         public DbSet<LoginInfoEntity> LoginInfos { set; get; }
+        public DbSet<HoKhauEntity> HoKhau { set; get; }
+        public DbSet<NhanKhauEntity> NhanKhau { set; get; }
+        public DbSet<TamTruEntity> TamTru { set; get; }
+        public DbSet<TamVangEntity> TamVang { set; get; }
+        public DbSet<LichSuEntity> LichSu { set; get; }
+        public DbSet<KhoanThuEntity> KhoanThu { set; get; }
+        public DbSet<KhoanThuTheoHoEntity> KhoanThuTheoHo { set; get; }
+        public DbSet<HoaDonEntity> HoaDon { set; get; }
+
 
         // Chuỗi kết nối tới CSDL (MS SQL Server)
 

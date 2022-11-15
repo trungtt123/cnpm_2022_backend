@@ -10,7 +10,7 @@ using System.Text;
 using CNPM;
 
 // InitDatabase
-InitDatabase.ResetDb();
+//InitDatabase.ResetDb();
 
 
 

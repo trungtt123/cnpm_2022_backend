@@ -10,6 +10,8 @@ using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using CNPM.Service.Interfaces;
 using System.Net.Mail;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace CNPM.Service.Implementations
 {
@@ -29,7 +31,7 @@ namespace CNPM.Service.Implementations
             });
             _mapper = config.CreateMapper();
         }
-        public bool VerifyToken(string token)
+        public IActionResult VerifyToken(string token)
         {
             try
             {
@@ -38,148 +40,327 @@ namespace CNPM.Service.Implementations
                 var userVersion = Int32.Parse(Helpers.DecodeJwt(token, "version"));
                 var user = _userRepository.GetUser(userName);
                 var checkToken = _userRepository.CheckToken(userName, token);
-                if (user == null || user.RoleId != roleId || user.Version != userVersion || !checkToken) return false;
-                return true;
+                if (user == null || user.RoleId != roleId || user.Version != userVersion || !checkToken)
+                    return new BadRequestObjectResult(new{
+                        message = Constant.INVALID_TOKEN
+                    });
+                UserDto1002 userDto1002 = _mapper.Map<UserEntity, UserDto1002>(user);
+                userDto1002.Token = token;
+                return new OkObjectResult(new
+                {
+                    message = Constant.VALID_TOKEN,
+                    data = userDto1002
+                });
             }
-            catch (Exception ex)
+            catch
             {
-                return false;
+                throw new Exception();
             }
         }
-        public List<UserDto1001> GetAllUsers()
+
+        public IActionResult GetAllUsers()
         {
-            var users = _userRepository.GetAllUsers();
-            List<UserDto1001> arr = _mapper.Map<List<UserEntity>, List<UserDto1001>>(users);
-            return arr;
+            try
+            {
+                var users = _userRepository.GetAllUsers();
+                List<UserDto1001> arr = _mapper.Map<List<UserEntity>, List<UserDto1001>>(users);
+                if (arr == null)
+                    return new BadRequestObjectResult(new
+                    {
+                        message = Constant.GET_LIST_USERS_FAILED
+                    });
+                return new OkObjectResult(new
+                {
+                    message = Constant.GET_LIST_USERS_SUCCESSFULLY,
+                    data = arr
+                });
+            }
+            catch
+            {
+                throw new Exception();
+            }
         }
-        public UserDto1002 Authenticate(UserDto1004 userLogin)
+        public IActionResult Authenticate(UserDto1004 userLogin)
         {
+            try
+            {
+                var user = _userRepository.GetUser(userLogin.UserName);
 
-            var user = _userRepository.GetUser(userLogin.UserName);
+                if (user == null) return new BadRequestObjectResult(new
+                {
+                    message = Constant.USERNAME_NOT_EXIST
+                });
 
-            if (user == null) return null;
 
-            bool isValidPassWord = Helpers.IsValidPassWord(userLogin.Password, user.Password);
+                bool isValidPassWord = Helpers.IsValidPassWord(userLogin.Password, user.Password);
 
-            if (!isValidPassWord) return null;
+                if (!isValidPassWord) return new BadRequestObjectResult(new
+                {
+                    message = Constant.INVALID_PASSWORD
+                });
 
-            var claims = new[]
-        {
-            
+                var claims = new[]
+                {
 
-            new Claim("username", user.UserName),
 
-            new Claim("firstname", user.FirstName),
+                new Claim("username", user.UserName),
 
-            new Claim("lastname", user.LastName),
+                new Claim("firstname", user.FirstName),
 
-            new Claim("version", user.Version.ToString()),
+                new Claim("lastname", user.LastName),
 
-            new Claim("role", user.RoleId.ToString()),
+                new Claim("version", user.Version.ToString()),
 
-        };
-            var token = new JwtSecurityToken
-            (
-                issuer: _iconfiguration["Jwt:Issuer"],
-                audience: _iconfiguration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.UtcNow.AddDays(1),
-                notBefore: DateTime.UtcNow,
-                signingCredentials: new SigningCredentials(
-                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_iconfiguration["Jwt:Key"])),
-                    SecurityAlgorithms.HmacSha256)
-            );
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+                new Claim("role", user.RoleId.ToString()),
 
-            UserDto1002 userDto = _mapper.Map<UserEntity, UserDto1002>(user);
+            };
+                var token = new JwtSecurityToken
+                (
+                    issuer: _iconfiguration["Jwt:Issuer"],
+                    audience: _iconfiguration["Jwt:Audience"],
+                    claims: claims,
+                    expires: DateTime.UtcNow.AddDays(1),
+                    notBefore: DateTime.UtcNow,
+                    signingCredentials: new SigningCredentials(
+                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_iconfiguration["Jwt:Key"])),
+                        SecurityAlgorithms.HmacSha256)
+                );
+                var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
-            userDto.Token = tokenString;
+                UserDto1002 userDto1002 = _mapper.Map<UserEntity, UserDto1002>(user);
 
-            userDto.RoleId = user.RoleId;
+                userDto1002.Token = tokenString;
 
-            var checkSaveToken = _userRepository.SaveToken(userLogin.UserName, tokenString);
+                userDto1002.RoleId = user.RoleId;
 
-            if (!checkSaveToken) return null;
+                _userRepository.SaveToken(userLogin.UserName, tokenString);
 
-            return userDto;
+                return new OkObjectResult(new
+                {
+                    message = Constant.LOGIN_SUCCESSFULLY,
+                    data = userDto1002
+                });
+            }
+            catch
+            {
+                throw new Exception();
+            }
         }
-        public bool Logout(string userName, string accessToken)
+        public IActionResult Logout(string accessToken)
         {
-            return _userRepository.DeleteToken(userName, accessToken);
+            try
+            {
+                var userName = Helpers.DecodeJwt(accessToken, "username");
+                _userRepository.DeleteToken(userName, accessToken);
+                return new OkObjectResult(new
+                {
+                    message = Constant.LOGOUT_FAILED
+                });
+            }
+            catch
+            {
+                throw new Exception();
+            }
         }
 
-        public UserDto1003 GetUser(string userName)
+        public IActionResult GetUser(string userName)
         {
             UserEntity user = _userRepository.GetUser(userName);
 
-            if (user == null) return null;
+            if (user == null) return new BadRequestObjectResult (
+                   new {
+                    message = Constant.USERNAME_NOT_EXIST
+                   }
+                );
 
-            var userInfomation = _mapper.Map<UserEntity, UserDto1003>(user);
+            var userDto1003 = _mapper.Map<UserEntity, UserDto1003>(user);
 
-            return userInfomation;
+            return new OkObjectResult (new {
+                    message = Constant.GET_USER_SUCCESSFULLY,
+                    data = userDto1003
+            });
         }
-        public UserDto1003 CreateUser(UserDto1005 user)
+        public IActionResult CreateUser(UserDto1005 user)
         {
-            var userTmp = _userRepository.GetUser(user.UserName);
-            if (userTmp != null) return null;
-
-            UserEntity userEntity;
-            UserDto1003 userInfomation;
-
-            userEntity = _mapper.Map<UserDto1005, UserEntity>(user);
-            userInfomation = _mapper.Map<UserDto1005, UserDto1003>(user);
-
-            string password = Helpers.RandomString(Constant.RANDOM_DEFAULT_PASSWORD_LENGTH);
-
-            userEntity.Password = Helpers.GetHashPassword(password);
-          
-            var userResponse = _userRepository.CreateUser(userEntity);
-            
-            
-            if (userResponse != null)
+            try
             {
-                return userInfomation;
+                var userTmp = _userRepository.GetUser(user.UserName);
+                if (userTmp != null) return null;
 
+                UserEntity userEntity;
+                UserDto1003 userDto1003;
+
+                userEntity = _mapper.Map<UserDto1005, UserEntity>(user);
+                userDto1003 = _mapper.Map<UserDto1005, UserDto1003>(user);
+
+                string password = Helpers.RandomString(Constant.RANDOM_DEFAULT_PASSWORD_LENGTH);
+
+                userEntity.Password = Helpers.GetHashPassword(password);
+                userEntity.UserUpdate = user.UserCreate;
+                userEntity.CreateTime = DateTime.Now;
+                userEntity.UpdateTime = DateTime.Now;
+                userEntity.Delete = Constant.NOT_DELETE;
+                userEntity.Version = 0;
+
+                var userResponse = _userRepository.CreateUser(userEntity);
+
+
+                if (userResponse != null)
+                {
+                    return new OkObjectResult(new
+                    {
+                        message = Constant.CREATE_USER_SUCCESSFULLY,
+                        data = userDto1003
+                    });
+
+                }
+                return new BadRequestObjectResult(new
+                {
+                    message = Constant.CREATE_USER_FAILED
+                });
             }
-            return null;
+            catch
+            {
+                throw new Exception();
+            }
         }
 
-        public bool UpdateUser(UserDto1006 newUserData)
+        public IActionResult UpdateUser(UserDto1006 newUserData)
         {
-            UserEntity userEntity;
+            try
+            {
+                var userTmp = _userRepository.GetUser(newUserData.UserName);
+                if (userTmp == null) return new BadRequestObjectResult(new
+                {
+                    message = Constant.USERNAME_NOT_EXIST
+                });
+                if (userTmp.Version != newUserData.Version) return new BadRequestObjectResult(new
+                {
+                    message = Constant.DATA_UPDATED_BEFORE
+                });
 
-            userEntity = _mapper.Map<UserDto1006, UserEntity>(newUserData);
-         
-            return _userRepository.UpdateUser(userEntity);
+                UserEntity userEntity;
+
+                userEntity = _mapper.Map<UserDto1006, UserEntity>(newUserData);
+                userEntity.UserUpdate = newUserData.UserUpdate;
+                userEntity.UpdateTime = DateTime.Now;
+                userEntity.Version += 1;
+
+                var kt = _userRepository.UpdateUser(userEntity);
+                if (kt) return new OkObjectResult(new
+                {
+                    message = Constant.UPDATE_USER_SUCCESSFULLY
+                });
+                return new BadRequestObjectResult(new
+                {
+                    message = Constant.UPDATE_USER_FAILED
+                }); ;
+            }
+            catch
+            {
+                throw new Exception();
+            }
         }
 
-        public bool DeleteUser(string userName)
+        public IActionResult DeleteUser(UserDto1007 user)
         {
-      
-            return _userRepository.DeleteUser(userName);
+            try
+            {
+                var userTmp = _userRepository.GetUser(user.UserName);
+                if (userTmp == null) return new BadRequestObjectResult(new
+                {
+                    message = Constant.USERNAME_NOT_EXIST
+                });
+                if (userTmp.Version != user.Version) return new BadRequestObjectResult(new
+                {
+                    message = Constant.DATA_UPDATED_BEFORE
+                });
+                UserEntity userEntity;
 
+                userEntity = _mapper.Map<UserDto1007, UserEntity>(user);
+                userEntity.UserUpdate = user.UserUpdate;
+                userEntity.UpdateTime = DateTime.Now;
+                userEntity.Version += 1;
+
+                var kt = _userRepository.DeleteUser(userEntity);
+                if (kt) return new OkObjectResult(
+                    new
+                    {
+                        message = Constant.DELETE_USER_SUCCESSFULLY
+                    });
+                return new BadRequestObjectResult(new
+                {
+                    message = Constant.DELETE_USER_FAILED
+                });
+            }
+            catch
+            {
+                throw new Exception();
+            }
         }
-        public List<RoleDto> GetListPermissions()
+        public IActionResult GetListPermissions()
         {
-           
-            List<RoleEntity> arrPermissionEntity = _userRepository.GetListPermissions();
-            List<RoleDto> arrPermissionDto = _mapper.Map<List<RoleEntity>, List<RoleDto>>(arrPermissionEntity);
-            return arrPermissionDto;
+            try
+            {
+                List<RoleEntity> arrPermissionEntity = _userRepository.GetListPermissions();
+                List<RoleDto> arrPermissionDto = _mapper.Map<List<RoleEntity>, List<RoleDto>>(arrPermissionEntity);
+
+                if (arrPermissionDto == null)
+                {
+                    
+                    return new BadRequestObjectResult(new
+                    {
+                        message = Constant.GET_LIST_PERMISSIONS_FAILED
+                    });
+                }
+                return new OkObjectResult(new
+                {
+                    message = Constant.GET_LIST_PERMISSIONS_SUCCESSFULLY,
+                    data = arrPermissionDto
+                });
+            }
+            catch
+            {
+                throw new Exception();
+            }
         }
-        public bool ChangePassWord(UserDto1000 userData)
+        public IActionResult ChangePassWord(UserDto1000 userData)
         {
-            
-            var user = _userRepository.GetUser(userData.UserName);
 
-            if (user == null) return false;
+            try
+            {
+                var user = _userRepository.GetUser(userData.UserName);
 
-            bool isValidPassWord = Helpers.IsValidPassWord(userData.OldPassword, user.Password);
+                if (user == null) return new BadRequestObjectResult(new
+                {
+                    message = Constant.USERNAME_NOT_EXIST
+                });
 
-            if (!isValidPassWord) return false;
+                bool isValidPassWord = Helpers.IsValidPassWord(userData.OldPassword, user.Password);
 
-            bool kt = _userRepository.ChangePassWord(user.UserName, Helpers.GetHashPassword(userData.NewPassword));
+                if (!isValidPassWord) return new BadRequestObjectResult(new
+                {
+                    message = Constant.INVALID_PASSWORD
+                });
 
-            return kt;
+                bool kt = _userRepository.ChangePassWord(user.UserName, Helpers.GetHashPassword(userData.NewPassword));
+
+                if (kt)
+                {
+                    return new OkObjectResult(new
+                    {
+                        message = Constant.CHANGE_PASSWORD_SUCCESSFULLY
+                    });
+                }
+                return new BadRequestObjectResult(new
+                {
+                    message = Constant.CHANGE_PASSWORD_FAILED
+                }); ;
+            }
+            catch
+            {
+                throw new Exception();
+            }
         }
     
 

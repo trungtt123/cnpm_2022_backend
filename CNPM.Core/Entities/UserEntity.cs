@@ -7,11 +7,10 @@ namespace CNPM.Core.Entities
     {
         [Key]
         [Required]
-        [Column(TypeName = "varchar(100)")]
+        [Column(TypeName = "varchar(40)")]
         public string UserName { get; set; }
         
         [Required]
-        [Column(TypeName = "varchar(100)")]
         public string Password { get; set; }
         
         [StringLength(100)]

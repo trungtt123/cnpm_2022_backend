@@ -20,19 +20,8 @@ namespace CNPM.Controllers.AllowAnonymous
         [HttpPost("login")]
         public IActionResult Authenticate([FromBody] UserDto1004 userData)
         {
-            var user = _userService.Authenticate(userData);
-
-            var response = new ResponseDto();
-
-            if (user == null)
-            {
-                response.Message = Constant.USERNAME_OR_PASSWORD_IS_INCORRECT;
-
-                return BadRequest(Helpers.SerializeObject(response));
-            }
-            response.Message = Constant.AUTHENTICATION_SUCCESSFULLY;
-            response.Data = user;
-            return Ok(Helpers.SerializeObject(response));
+            
+            return _userService.Authenticate(userData);
 
         }
     }

@@ -51,13 +51,15 @@ namespace CNPM.Repository.Implementations
                 return null;
             }
         }
-        public bool DeleteUser(string userName)
+        public bool DeleteUser(UserEntity userData)
         {
             try
             {                
-                var user = _dbcontext.Users.FirstOrDefault(o => o.UserName == userName && o.Delete == Constant.NOT_DELETE);
+                var user = _dbcontext.Users.FirstOrDefault(o => o.UserName == userData.UserName && o.Delete == Constant.NOT_DELETE);
 
                 user.Delete = Constant.DELETE;
+                user.UserUpdate = userData.UserName;
+                user.UpdateTime = DateTime.Now;
 
                 _dbcontext.SaveChanges();
                
@@ -78,9 +80,13 @@ namespace CNPM.Repository.Implementations
 
                 if (user != null)
                 {
+                    user.UserUpdate = newUserData.UserUpdate;
+                    user.UpdateTime = newUserData.UpdateTime;
                     user.FirstName = newUserData.FirstName;
                     user.LastName = newUserData.LastName;
                     user.RoleId = newUserData.RoleId;
+                    user.Version = newUserData.Version;
+                    user.Email = newUserData.Email;
                     _dbcontext.SaveChanges();
                     return true;
                 }
@@ -136,7 +142,7 @@ namespace CNPM.Repository.Implementations
             }
         }
 
-        public bool SaveToken(string userName, string accessToken)
+        public void SaveToken(string userName, string accessToken)
         {
             try
             {
@@ -151,11 +157,10 @@ namespace CNPM.Repository.Implementations
                 loginInfo.Version = 0;
                 _dbcontext.LoginInfos.Add(loginInfo);
                 _dbcontext.SaveChanges();
-                return true;
             }
             catch(Exception e)
             {
-                return false;
+                throw new Exception();
             }
            
         }
@@ -167,6 +172,7 @@ namespace CNPM.Repository.Implementations
                 if (loginInfo != null)
                 {
                     loginInfo.Delete = Constant.DELETE;
+                    loginInfo.UpdateTime = DateTime.Now;
                     loginInfo.Version++;
                     _dbcontext.SaveChanges();
                 }

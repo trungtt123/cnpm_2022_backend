@@ -4,6 +4,7 @@ using CNPM.Service.Interfaces;
 using CNPM.Core.Models;
 using CNPM.Core.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using CNPM.Service.Implementations;
 
 namespace CNPM.Controllers.Authorize
 {
@@ -23,21 +24,10 @@ namespace CNPM.Controllers.Authorize
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
         [HttpPost("logout")]
-        public IActionResult Logout(string userName)
+        public IActionResult Logout()
         {
             var accessToken = Request.Headers["Authorization"].ToString().Replace("Bearer ", string.Empty);
-            var kt = _userService.Logout(userName, accessToken);
-
-            var response = new ResponseDto();
-
-            if (!kt)
-            {
-                response.Message = Constant.LOGOUT_FAILED;
-
-                return BadRequest(Helpers.SerializeObject(response));
-            }
-            response.Message = Constant.LOGOUT_SUCCESSFULLY;
-            return Ok(Helpers.SerializeObject(response));
+            return _userService.Logout(accessToken);
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
@@ -45,59 +35,22 @@ namespace CNPM.Controllers.Authorize
         [HttpGet("verify-token")]
         public IActionResult VerifyToken()
         {
-            var response = new ResponseDto();
-            response.Message = Constant.INVALID_TOKEN;
-            try
-            {
-                var jwt = Request.Headers["Authorization"].ToString().Replace("Bearer ", string.Empty);
-                var kt = _userService.VerifyToken(jwt);
-                var userName = Helpers.DecodeJwt(jwt, "username");
-                var userData = _userService.GetUser(userName);
-                if (!kt) return new UnauthorizedResult();
-                response.Message = Constant.VALID_TOKEN;
-                response.Data = userData;
-                return Ok(Helpers.SerializeObject(response));
-            }
-            catch (Exception ex)
-            {
-                return new UnauthorizedResult();
-            }
+            var jwt = Request.Headers["Authorization"].ToString().Replace("Bearer ", string.Empty);
+            return _userService.VerifyToken(jwt);
         }
 
         [HttpGet("get-list-permissions")]
         [AllowAnonymous]
         public IActionResult GetListPermissions()
         {
-            var response = new ResponseDto();
-            var listPermissions = _userService.GetListPermissions();
-            if (listPermissions != null)
-            {
-                response.Message = Constant.GET_LIST_PERMISSIONS_SUCCESSFULLY;
-                response.Data = listPermissions;
-                return Ok(Helpers.SerializeObject(response));
-            }
-            else
-            {
-                response.Message = Constant.GET_LIST_PERMISSIONS_FAILED;
-                return BadRequest(Helpers.SerializeObject(response));
-            }
+            return _userService.GetListPermissions();
         }
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
         [HttpGet("user")]
         public IActionResult GetUser(string userName)
         {
-            var user = _userService.GetUser(userName);
-            var response = new ResponseDto();
-            if (user == null)
-            {
-
-                response.Message = Constant.GET_USER_FAILED;
-                return BadRequest(Helpers.SerializeObject(response));
-            }
-            response.Message = Constant.GET_USER_SUCCESSFULLY;
-            response.Data = user;
-            return Ok(Helpers.SerializeObject(response));
+            return _userService.GetUser(userName);
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
@@ -105,18 +58,11 @@ namespace CNPM.Controllers.Authorize
         [HttpPost("user")]
         public IActionResult CreateUser([FromBody] UserDto1005 user)
         {
-            var userResponse = _userService.CreateUser(user);
-            var response = new ResponseDto();
-
-            if (userResponse == null)
+            if (!ModelState.IsValid)
             {
-                response.Message = Constant.CREATE_USER_FAILED;
-                return BadRequest(Helpers.SerializeObject(response));
+                return BadRequest(user);
             }
-            response.Message = Constant.CREATE_USER_SUCCESSFULLY;
-            response.Data = userResponse;
-            return Ok(Helpers.SerializeObject(response));
-
+            return _userService.CreateUser(user);
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
@@ -124,34 +70,19 @@ namespace CNPM.Controllers.Authorize
         [HttpPut("user")]
         public IActionResult UpdateUser([FromBody] UserDto1006 newUserData)
         {
-            var kt = _userService.UpdateUser(newUserData);
-            var response = new ResponseDto();
-
-            if (!kt)
+            if (!ModelState.IsValid)
             {
-                response.Message = Constant.UPDATE_USER_FAILED;
-                return BadRequest(Helpers.SerializeObject(response));
+                return BadRequest(newUserData);
             }
-            response.Message = Constant.UPDATE_USER_SUCCESSFULLY;
-            return Ok(Helpers.SerializeObject(response));
+            return _userService.UpdateUser(newUserData);
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator)]
         [HttpDelete("user")]
-        public IActionResult DeleteUser(string userName)
+        public IActionResult DeleteUser([FromBody] UserDto1007 user)
         {
-            var kt = _userService.DeleteUser(userName);
-            var response = new ResponseDto();
-
-            if (kt)
-            {
-
-                response.Message = Constant.DELETE_USER_SUCCESSFULLY;
-                return Ok(Helpers.SerializeObject(response));
-            }
-            response.Message = Constant.DELETE_USER_FAILED;
-            return BadRequest(Helpers.SerializeObject(response));
+            return _userService.DeleteUser(user);
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
@@ -159,37 +90,18 @@ namespace CNPM.Controllers.Authorize
         [HttpGet("get-all-users")]
         public IActionResult GetAllUsers()
         {
-            var users = _userService.GetAllUsers();
-            var response = new ResponseDto();
-
-            if (users == null)
-            {
-                response.Message = Constant.GET_LIST_USERS_FAILED;
-                return BadRequest(Helpers.SerializeObject(response));
-            }
-            response.Message = Constant.GET_LIST_USERS_SUCCESSFULLY;
-            response.Data = users;
-            return Ok(Helpers.SerializeObject(response));
+            return _userService.GetAllUsers();
         }
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
         [HttpPut("change-password")]
-
         public IActionResult ChangePassWord([FromBody] UserDto1000 userData)
         {
-            var kt = false;
-            var jwt = Request.Headers["Authorization"].ToString().Replace("Bearer ", string.Empty);
-            var userName = Helpers.DecodeJwt(jwt, "username");
-
-            if (userName == userData.UserName) kt = _userService.ChangePassWord(userData);
-            var response = new ResponseDto();
-            if (!kt)
+            if (!ModelState.IsValid)
             {
-                response.Message = Constant.CHANGE_PASSWORD_FAILED;
-                return BadRequest(Helpers.SerializeObject(response));
+                return BadRequest(userData);
             }
-            response.Message = Constant.CHANGE_PASSWORD_SUCCESSFULLY;
-            return Ok(Helpers.SerializeObject(response));
+            return _userService.ChangePassWord(userData);
         }
     }
 }

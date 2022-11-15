@@ -4,23 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CNPM.Core.Models;
-
+using Microsoft.AspNetCore.Mvc;
 
 namespace CNPM.Service.Interfaces
 {
     public interface IUserService
     {
-        public bool VerifyToken(string token);
-        public UserDto1002 Authenticate(UserDto1004 userLogin);
+        public IActionResult VerifyToken(string token);
+        public IActionResult Authenticate(UserDto1004 userLogin);
 
-        public bool Logout(string userName, string accessToken);
-        public UserDto1003 CreateUser(UserDto1005 user);
-        public bool UpdateUser(UserDto1006 newUserData);
-        public bool DeleteUser(string userName);
+        public IActionResult Logout(string accessToken);
+        public IActionResult CreateUser(UserDto1005 user);
+        public IActionResult UpdateUser(UserDto1006 newUserData);
+        public IActionResult DeleteUser(UserDto1007 user);
 
-        public UserDto1003 GetUser(string userName);
-        public bool ChangePassWord(UserDto1000 userData);
-        public List<RoleDto> GetListPermissions();
-        public List<UserDto1001> GetAllUsers();
+        public IActionResult GetUser(string userName);
+        public IActionResult ChangePassWord(UserDto1000 userData);
+        public IActionResult GetListPermissions();
+        public IActionResult GetAllUsers();
     }
 }

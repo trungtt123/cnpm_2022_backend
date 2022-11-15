@@ -13,6 +13,7 @@ namespace CNPM.Core.Models
             CreateMap<UserDto1005, UserDto1003>();
             CreateMap<UserDto1006, UserDto1003>();
             CreateMap<UserDto1006, UserEntity>();
+            CreateMap<UserDto1007, UserEntity>();
             CreateMap<RoleEntity, RoleDto>();
         }
     }
