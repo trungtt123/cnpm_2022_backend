@@ -7,8 +7,9 @@ namespace CNPM.Core.Entities
     {
         [Key]
         [Required]
-        public int ID { get; set; }
-        
+        public int MaTamVang { get; set; }
+
+        [Required]
         public int MaNhanKhau { get; set; }
         [ForeignKey("MaNhanKhau")]
         public NhanKhauEntity NhanKhau { get; set; }

@@ -43,5 +43,8 @@ namespace CNPM.Core.Entities
 
         [StringLength(200)]
         public string GhiChu { get; set; }
+
+        [Required]
+        public int TrangThai { get; set; } // 1 còn sống, 0 đã chết
     }
 }
