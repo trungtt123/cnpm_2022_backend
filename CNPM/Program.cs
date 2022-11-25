@@ -64,6 +64,9 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSingleton<IUserService, UserService>();
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<INhanKhauService, NhanKhauService>();
+builder.Services.AddSingleton<INhanKhauRepository, NhanKhauRepository>();
+
 
 builder.Services.AddHttpClient();
 

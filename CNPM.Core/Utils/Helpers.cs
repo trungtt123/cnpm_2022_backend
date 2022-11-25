@@ -40,26 +40,6 @@ namespace CNPM.Core.Utils
                ) return true;
             return false;   
         }
-        public static string GetResponseStatus(string status)
-        {
-            if (
-                   status == Constant.INVALID_INPUT
-                || status == Constant.INVALID_USER_CREDENTIALS
-                || status == Constant.USER_NOT_FOUND
-                || status == Constant.USER_ALREADY_EXISTS
-                || status == Constant.USERNAME_OR_PASSWORD_IS_INCORRECT
-                || status == Constant.GET_USER_FAILED
-
-               ) return "400";
-            if (
-                   status == Constant.CREATE_USER_SUCCESSFULLY
-                || status == Constant.DELETE_USER_SUCCESSFULLY
-                || status == Constant.GET_USER_SUCCESSFULLY
-
-                ) return "200";
-            return "200";
-
-        }
 
         public static string GetHashPassword(string password)
         {
