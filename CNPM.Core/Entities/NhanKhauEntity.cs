@@ -36,13 +36,13 @@ namespace CNPM.Core.Entities
         [StringLength(30)]
         public string QuanHe { get; set; }
 
-        public string MaHoKhau { get; set; }
+        public string? MaHoKhau { get; set; }
 
         [ForeignKey("MaHoKhau")]
-        public HoKhauEntity HoKhau { get; set; }
+        public HoKhauEntity? HoKhau { get; set; }
 
         [StringLength(200)]
-        public string GhiChu { get; set; }
+        public string? GhiChu { get; set; }
 
         [Required]
         public int TrangThai { get; set; } // 1 còn sống, 0 đã chết

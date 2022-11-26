@@ -10,20 +10,13 @@ namespace CNPM.Repository.Interfaces
 {
     public interface IHoKhauRepository
     {
-       
-        public UserEntity GetUser(string userName);
-
-        public UserEntity CreateUser(UserEntity userData);
-        public bool DeleteUser(UserEntity userName);
-
-        public bool UpdateUser(UserEntity newUserData); 
-        public List<UserEntity> GetAllUsers();
-
-        public List<RoleEntity> GetListPermissions();
-
-        public bool ChangePassWord(string userName, string newPassWord);
-        public void SaveToken(string userName, string accessToken);
-        public bool CheckToken(string userName, string accessToken);
-        public bool DeleteToken(string userName, string accessToken);
+        public List<HoKhauEntity> GetListHoKhau(int index, int limit);
+        public HoKhauEntity GetHoKhau(string maHoKhau);
+        public string CreateHoKhau(HoKhauEntity hoKhau);
+        public string UpdateHoKhau(HoKhauEntity hoKhau);
+        public bool CheckMaHoKhauExisted(string maHoKhau);
+        public bool DeleteHoKhau(string maHoKhau, string userName);
+        public bool AddNhanKhauToHoKhau(List<int> danhSachNhanKhau, string maHoKhau, string userName);
+        public bool RemoveNhanKhauFromHoKhau(string maHoKhau, string userName);
     }
 }

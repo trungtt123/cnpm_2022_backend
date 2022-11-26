@@ -10,11 +10,6 @@ namespace CNPM.Core.Entities
         public int MaTamTru { get; set; }
 
         [Required]
-        public string MaHoKhau { get; set; }    
-        [ForeignKey("MaHoKhau")]
-        public HoKhauEntity HoKhau { get; set; }
-
-        [Required]
         [StringLength(100)]
         public string HoTen { get; set; }
 
@@ -23,7 +18,7 @@ namespace CNPM.Core.Entities
         public string DiaChiThuongTru { get; set; }
 
         [StringLength(100)]
-        public string DiaChiTamTru { get; set; } // tạm trú tại địa chỉ, cần mã hộ khẩu để lúc sau tính phí sinh hoạt 
+        public string DiaChiTamTru { get; set; }
 
         [Required,StringLength(20)]
         public string CanCuocCongDan { get; set; }

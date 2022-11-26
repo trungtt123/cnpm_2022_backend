@@ -60,7 +60,7 @@ namespace CNPM.Repository.Implementations
                 user.Delete = Constant.DELETE;
                 user.UserUpdate = userData.UserName;
                 user.UpdateTime = DateTime.Now;
-
+                user.Version++;
                 _dbcontext.SaveChanges();
                
                 return true;
