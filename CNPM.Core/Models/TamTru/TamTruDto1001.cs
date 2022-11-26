@@ -11,28 +11,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CNPM.Core.Models.HoKhau
+namespace CNPM.Core.Models.TamTru
 {
-    public class HoKhauDto1001 // response 
+    public class TamTruDto1001 // response 
     {
 
-        [JsonProperty("maHoKhau")]
-        public string MaHoKhau { get; set; }
+        [JsonProperty("maTamTru")]
+        public string MaTamTru { get; set; }
 
-        [JsonProperty("soThanhVien")]
-        public int SoThanhVien { get; set; }
+        [JsonProperty("hoTen")]
+        public string HoTen { get; set; }
 
         [JsonProperty("diaChiThuongTru")]
         public string DiaChiThuongTru { get; set; }
 
-        [JsonProperty("noiCap")]
-        public string NoiCap { get; set; }
+        [JsonProperty("diaChiTamTru")]
+        public string DiaChiTamTru { get; set; }
 
-        [JsonProperty("ngayCap")]
-        public DateTime NgayCap { get; set; }
-
-        [JsonProperty("danhSachNhanKhau")]
-        public List<NhanKhauDto1001> DanhSachNhanKhau { get; set;}
+        [JsonProperty("canCuocCongDan")]
+        public string CanCuocCongDan { get; set; }
 
         [JsonProperty("createTime")]
         public DateTime CreateTime { get; set; }
