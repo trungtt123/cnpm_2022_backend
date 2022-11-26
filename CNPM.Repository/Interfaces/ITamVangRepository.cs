@@ -15,6 +15,7 @@ namespace CNPM.Repository.Interfaces
         public TamVangEntity GetTamVang(int maTamVang);
         public int CreateTamVang(TamVangEntity tamVang);
         public bool CheckExistCongDanDaDangKiTamVang(int maNhanKhau);
+        public bool CheckExistCongDanDaDangKiTamVangUpdate(int maTamVang, int maNhanKhau);
         public int UpdateTamVang(TamVangEntity tamVang);
         public bool DeleteTamVang(int maTamVang, string userName);
 

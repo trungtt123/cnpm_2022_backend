@@ -41,6 +41,47 @@ namespace CNPM.Repository.Implementations
                 throw new Exception(ex.Message);
             }
         }
+        public List<NhanKhauEntity> GetListNhanKhauNotHaveHoKhau(int index, int limit)
+        {
+            try
+            {
+                List<NhanKhauEntity> arr;
+                if (index == 0 && limit == 0)
+                {
+                    arr = _dbcontext.NhanKhau.Where(
+                    o => o.Delete == Constant.NOT_DELETE && o.MaHoKhau == null).ToList();
+                }
+                else arr = _dbcontext.NhanKhau.Where(
+                    o => o.Delete == Constant.NOT_DELETE && o.MaHoKhau == null).Skip(limit * (index - 1)).Take(limit).ToList();
+
+                return arr;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<NhanKhauEntity> GetListNhanKhauAlive(int index, int limit)
+        {
+            try
+            {
+                List<NhanKhauEntity> arr;
+                if (index == 0 && limit == 0)
+                {
+                    arr = _dbcontext.NhanKhau.Where(
+                    o => o.Delete == Constant.NOT_DELETE && o.TrangThai == Constant.ALIVE).ToList();
+                }
+                else arr = _dbcontext.NhanKhau.Where(
+                    o => o.Delete == Constant.NOT_DELETE && o.TrangThai == Constant.ALIVE).Skip(limit * (index - 1)).Take(limit).ToList();
+
+                return arr;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<NhanKhauEntity> GetListNhanKhauInHoKhau(string maHoKhau)
         {
             try

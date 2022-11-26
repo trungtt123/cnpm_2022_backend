@@ -90,6 +90,21 @@ namespace CNPM.Repository.Implementations
                 throw new Exception(ex.Message);
             }
         }
+
+        public bool CheckExistCongDanDaDangKiTamVangUpdate(int maTamVang, int maNhanKhau)
+        {
+            try
+            {
+                TamVangEntity tamVang = _dbcontext.TamVang.Where(
+                    o => o.Delete == Constant.NOT_DELETE && o.MaNhanKhau == maNhanKhau).FirstOrDefault();
+                if (tamVang == null || tamVang.MaTamVang == maTamVang) return true;
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public int UpdateTamVang(TamVangEntity newTamVang)
         {
             try

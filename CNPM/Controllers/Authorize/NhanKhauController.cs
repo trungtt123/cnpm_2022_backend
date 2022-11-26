@@ -33,6 +33,22 @@ namespace CNPM.Controllers.Authorize
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        [HttpGet("nhan-khau/danh-sach-nhan-khau-chua-dang-ky-tam-vang")]
+        public IActionResult GetListNhanKhauAlive(int index, int limit)
+        {
+            return _nhanKhauService.GetListNhanKhauAlive(index, limit);
+        }
+
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
+        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        [HttpGet("nhan-khau/danh-sach-nhan-khau-chua-co-ho-khau")]
+        public IActionResult GetListNhanKhauNotHaveHoKhau(int index, int limit)
+        {
+            return _nhanKhauService.GetListNhanKhauNotHaveHoKhau(index, limit);
+        }
+
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
+        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
         [HttpGet("nhan-khau/danh-sach-nhan-khau-trong-ho-khau")]
         public IActionResult GetListNhanKhauInHoKhau(string maHoKhau)
         {

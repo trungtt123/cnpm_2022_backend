@@ -95,7 +95,15 @@ namespace CNPM.Service.Implementations
                         reason = Constant.MA_NHAN_KHAU_NOT_EXIST
                     });
                 }
-
+                // check nhan khau con song
+                else if (nhanKhau.TrangThai == Constant.DIE)
+                {
+                    return new BadRequestObjectResult(new
+                    {
+                        message = Constant.CREATE_TAM_VANG_FAILED,
+                        reason = Constant.NHAN_KHAU_IS_DIED
+                    });
+                }                
                 bool CCCD = _tamVangRepository.CheckExistCongDanDaDangKiTamVang(tamVang1000.MaNhanKhau);
                 if (!CCCD)
                 {
@@ -142,12 +150,42 @@ namespace CNPM.Service.Implementations
                     message = Constant.UPDATE_TAM_VANG_FAILED,
                     reason = Constant.MA_TAM_VANG_NOT_EXIST
                 });
+                // check nhan khau
+                NhanKhauEntity nhanKhau = _nhanKhauRepository.GetNhanKhau(newTamVang.MaNhanKhau);
+                if (nhanKhau == null)
+                {
+                    return new BadRequestObjectResult(new
+                    {
+                        message = Constant.UPDATE_TAM_VANG_FAILED,
+                        reason = Constant.MA_NHAN_KHAU_NOT_EXIST
+                    });
+                }
+                // check nhan khau con song
+                else if (nhanKhau.TrangThai == Constant.DIE)
+                {
+                    return new BadRequestObjectResult(new
+                    {
+                        message = Constant.UPDATE_TAM_VANG_FAILED,
+                        reason = Constant.NHAN_KHAU_IS_DIED
+                    });
+                }
+                bool kt = _tamVangRepository.CheckExistCongDanDaDangKiTamVangUpdate(maTamVang, newTamVang.MaNhanKhau);
+                if (!kt)
+                {
+                    return new BadRequestObjectResult(new
+                    {
+                        message = Constant.UPDATE_TAM_VANG_FAILED,
+                        reason = Constant.REASON_NHAN_KHAU_TAM_VANG_EXISTED
+                    });
+                }
 
                 if (tamVang.Version != newTamVang.Version) return new BadRequestObjectResult(new
                 {
                     message = Constant.UPDATE_TAM_VANG_FAILED,
                     reason = Constant.DATA_UPDATED_BEFORE
                 });
+
+
                 
                 TamVangEntity tamVangEntity = _mapper.Map<TamVangDto1002, TamVangEntity>(newTamVang);
                 tamVangEntity.MaTamVang = maTamVang;

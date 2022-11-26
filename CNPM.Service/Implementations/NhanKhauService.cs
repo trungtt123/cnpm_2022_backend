@@ -54,6 +54,45 @@ namespace CNPM.Service.Implementations
                 throw new Exception(ex.Message);
             }
         }
+
+        public IActionResult GetListNhanKhauAlive(int index, int limit)
+        {
+            try
+            {
+                var listNhanKhau = _nhanKhauRepository.GetListNhanKhauAlive(index, limit);
+                var arr = _mapper.Map<List<NhanKhauEntity>, List<NhanKhauDto1003>>(listNhanKhau);
+                return new OkObjectResult(
+                    new
+                    {
+                        message = Constant.GET_LIST_NHAN_KHAU_ALIVE_SUCCESSFULLY,
+                        data = arr
+                    }
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public IActionResult GetListNhanKhauNotHaveHoKhau(int index, int limit)
+        {
+            try
+            {
+                var listNhanKhau = _nhanKhauRepository.GetListNhanKhauNotHaveHoKhau(index, limit);
+                var arr = _mapper.Map<List<NhanKhauEntity>, List<NhanKhauDto1003>>(listNhanKhau);
+                return new OkObjectResult(
+                    new
+                    {
+                        message = Constant.GET_LIST_NHAN_KHAU_NOT_HAVE_HO_KHAU_SUCCESSFULLY,
+                        data = arr
+                    }
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public IActionResult GetListNhanKhauInHoKhau(string maHoKhau)
         {
             try

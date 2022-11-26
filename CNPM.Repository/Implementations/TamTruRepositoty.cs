@@ -96,7 +96,7 @@ namespace CNPM.Repository.Implementations
             {
                 TamTruEntity tamTru = _dbcontext.TamTru.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.CanCuocCongDan == canCuocCongDan).FirstOrDefault();
-                if (tamTru.MaTamTru == maTamTru) return true;
+                if (tamTru == null || tamTru.MaTamTru == maTamTru) return true;
                 return false;
             }
             catch (Exception ex)

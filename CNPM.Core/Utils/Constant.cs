@@ -6,6 +6,8 @@
         public const string INVALID_USER_CREDENTIALS = "INVALID_USER_CREDENTIALS";
         public const int DELETE = 1;
         public const int NOT_DELETE = 0;
+        public const int ALIVE = 1;
+        public const int DIE = 0;
         public const string VALID_TOKEN = "Token hợp lệ";
         public const string INVALID_TOKEN = "Token không hợp lệ";
         public const string DATA_UPDATED_BEFORE = "Dữ liệu bạn muốn cập nhật đã bị thay đổi bởi người khác";
@@ -41,6 +43,8 @@
         public const string SYSTEM_EMAIL_PASSWORD = "project3";
 
         public const string GET_LIST_NHAN_KHAU_SUCCESSFULLY = "Lấy danh sách nhân khẩu thành công";
+        public const string GET_LIST_NHAN_KHAU_ALIVE_SUCCESSFULLY = "Lấy danh sách nhân khẩu còn sống thành công";
+        public const string GET_LIST_NHAN_KHAU_NOT_HAVE_HO_KHAU_SUCCESSFULLY = "Lấy danh sách nhân khẩu còn sống thành công";
         public const string GET_LIST_NHAN_KHAU_FAILED = "Lấy danh sách nhân khẩu thất bại";
 
         public const string GET_LIST_HO_KHAU_SUCCESSFULLY = "Lấy danh sách hộ khẩu thành công";
@@ -83,6 +87,7 @@
         public const string UPDATE_NHAN_KHAU_SUCCESSFULLY = "Cập nhật thông tin nhân khẩu thành công";
         public const string UPDATE_NHAN_KHAU_FAILED = "Cập nhật thông tin nhân khẩu thất bại";
         public const string MA_NHAN_KHAU_NOT_EXIST = "Mã nhân khẩu không tồn tại";
+        public const string NHAN_KHAU_IS_DIED = "Nhân khẩu đã qua đời";
 
         public const string UPDATE_TAM_TRU_SUCCESSFULLY = "Cập nhật thông tin tạm trú thành công";
         public const string UPDATE_TAM_TRU_FAILED = "Cập nhật thông tin tạm trú thất bại";

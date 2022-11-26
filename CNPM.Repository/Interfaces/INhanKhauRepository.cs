@@ -13,6 +13,8 @@ namespace CNPM.Repository.Interfaces
     {
         public List<NhanKhauEntity> GetListNhanKhauInHoKhau(string maHoKhau);
         public List<NhanKhauEntity> GetListNhanKhau(int index, int limit);
+        public List<NhanKhauEntity> GetListNhanKhauAlive(int index, int limit);
+        public List<NhanKhauEntity> GetListNhanKhauNotHaveHoKhau(int index, int limit);
         public NhanKhauEntity GetNhanKhau(int maNhanKhau);
         public int CreateNhanKhau(NhanKhauEntity nhanKhau);
         public bool CheckExistCanCuocCongDan(string CanCuocCongDan);
