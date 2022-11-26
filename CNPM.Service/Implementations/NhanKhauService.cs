@@ -22,15 +22,18 @@ namespace CNPM.Service.Implementations
     public class NhanKhauService : INhanKhauService
     {
         private readonly INhanKhauRepository _nhanKhauRepository;
+        private readonly IHoKhauRepository _hoKhauRepository;
         private readonly IMapper _mapper;
-        public NhanKhauService(INhanKhauRepository nhanKhauRepository)
+        public NhanKhauService(INhanKhauRepository nhanKhauRepository, IHoKhauRepository hoKhauRepository)
         {
             _nhanKhauRepository = nhanKhauRepository;
+            _hoKhauRepository = hoKhauRepository;
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new MappingProfile());
             });
             _mapper = config.CreateMapper();
+            
         }
         public IActionResult GetListNhanKhau(int index, int limit)
         {
@@ -55,6 +58,15 @@ namespace CNPM.Service.Implementations
         {
             try
             {
+                // check ho khau ton tai ?
+                var hoKhau = _hoKhauRepository.GetHoKhau(maHoKhau);
+                if (hoKhau == null) return new BadRequestObjectResult(
+                       new
+                       {
+                           message = Constant.GET_LIST_NHAN_KHAU_FAILED,
+                           reason = Constant.MA_HO_KHAU_NOT_EXIST
+                       }
+                    );
                 var listNhanKhau = _nhanKhauRepository.GetListNhanKhauInHoKhau(maHoKhau);
                 var arr = _mapper.Map<List<NhanKhauEntity>, List<NhanKhauDto1003>>(listNhanKhau);
                 return new OkObjectResult(
@@ -79,7 +91,8 @@ namespace CNPM.Service.Implementations
                 if (nhanKhau == null) return new BadRequestObjectResult(
                        new
                        {
-                           message = Constant.GET_NHAN_KHAU_FAILED
+                           message = Constant.GET_NHAN_KHAU_FAILED,
+                           reason = Constant.MA_NHAN_KHAU_NOT_EXIST
                        }
                     );
 
@@ -116,14 +129,14 @@ namespace CNPM.Service.Implementations
                 nhanKhau.UpdateTime = DateTime.Now;
                 nhanKhau.UserCreate = userName;
                 nhanKhau.UserUpdate = userName;
-                int maHoKhau = _nhanKhauRepository.CreateNhanKhau(nhanKhau);
+                int maNhanKhau = _nhanKhauRepository.CreateNhanKhau(nhanKhau);
 
-                if (maHoKhau != -1)
+                if (maNhanKhau != -1)
                 {
                     return new OkObjectResult(new
                     {
                         message = Constant.CREATE_NHAN_KHAU_SUCCESSFULLY,
-                        data = new { maHoKhau = maHoKhau }
+                        data = new { maNhanKhau = maNhanKhau }
                     });
                 }
                 return new BadRequestObjectResult(new

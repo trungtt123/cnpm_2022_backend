@@ -17,10 +17,12 @@ namespace CNPM.Core.Entities
         [StringLength(100)]
         public string DiaChiThuongTru { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string DiaChiTamTru { get; set; }
 
-        [Required,StringLength(20)]
+        [Required]
+        [StringLength(20)]
         public string CanCuocCongDan { get; set; }
     }
 }

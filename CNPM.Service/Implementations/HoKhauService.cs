@@ -63,7 +63,8 @@ namespace CNPM.Service.Implementations
                 if (hoKhau == null) return new BadRequestObjectResult(
                        new
                        {
-                           message = Constant.GET_HO_KHAU_FAILED
+                           message = Constant.GET_HO_KHAU_FAILED,
+                           reason = Constant.MA_HO_KHAU_NOT_EXIST
                        }
                     );
 
