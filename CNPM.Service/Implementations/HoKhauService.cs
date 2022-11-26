@@ -138,7 +138,7 @@ namespace CNPM.Service.Implementations
                     reason = Constant.MA_HO_KHAU_NOT_EXIST
                 });
                 // còn thiếu check version nhan khau
-                if (hoKhau.Version != hoKhau.Version) return new BadRequestObjectResult(new
+                if (hoKhau.Version != newHoKhau.Version) return new BadRequestObjectResult(new
                 {
                     message = Constant.UPDATE_HO_KHAU_FAILED,
                     reason = Constant.DATA_UPDATED_BEFORE
