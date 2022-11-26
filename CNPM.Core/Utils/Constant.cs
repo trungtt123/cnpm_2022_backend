@@ -43,8 +43,8 @@
         public const string SYSTEM_EMAIL_PASSWORD = "project3";
 
         public const string GET_LIST_NHAN_KHAU_SUCCESSFULLY = "Lấy danh sách nhân khẩu thành công";
-        public const string GET_LIST_NHAN_KHAU_ALIVE_SUCCESSFULLY = "Lấy danh sách nhân khẩu còn sống thành công";
-        public const string GET_LIST_NHAN_KHAU_NOT_HAVE_HO_KHAU_SUCCESSFULLY = "Lấy danh sách nhân khẩu còn sống thành công";
+        public const string GET_LIST_NHAN_KHAU_ALIVE_SUCCESSFULLY = "Lấy danh sách nhân khẩu chưa đăng ký tạm vắng thành công";
+        public const string GET_LIST_NHAN_KHAU_NOT_HAVE_HO_KHAU_SUCCESSFULLY = "Lấy danh sách nhân khẩu chưa có hộ khẩu thành công";
         public const string GET_LIST_NHAN_KHAU_FAILED = "Lấy danh sách nhân khẩu thất bại";
 
         public const string GET_LIST_HO_KHAU_SUCCESSFULLY = "Lấy danh sách hộ khẩu thành công";

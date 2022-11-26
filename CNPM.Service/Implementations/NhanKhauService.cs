@@ -23,11 +23,15 @@ namespace CNPM.Service.Implementations
     {
         private readonly INhanKhauRepository _nhanKhauRepository;
         private readonly IHoKhauRepository _hoKhauRepository;
+        private readonly ITamVangRepository _tamVangRepository;
         private readonly IMapper _mapper;
-        public NhanKhauService(INhanKhauRepository nhanKhauRepository, IHoKhauRepository hoKhauRepository)
+        public NhanKhauService(INhanKhauRepository nhanKhauRepository, 
+            IHoKhauRepository hoKhauRepository,
+            ITamVangRepository tamVangRepository)
         {
             _nhanKhauRepository = nhanKhauRepository;
             _hoKhauRepository = hoKhauRepository;
+            _tamVangRepository = tamVangRepository;
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new MappingProfile());
@@ -61,11 +65,19 @@ namespace CNPM.Service.Implementations
             {
                 var listNhanKhau = _nhanKhauRepository.GetListNhanKhauAlive(index, limit);
                 var arr = _mapper.Map<List<NhanKhauEntity>, List<NhanKhauDto1003>>(listNhanKhau);
+                List<NhanKhauDto1003> dataExpected = new List<NhanKhauDto1003>();
+                for (int i = 0; i < arr.Count; i++)
+                {
+                    if (_tamVangRepository.CheckExistCongDanDaDangKiTamVang(arr[i].MaNhanKhau))
+                    {
+                        dataExpected.Add(arr[i]);
+                    }
+                }
                 return new OkObjectResult(
                     new
                     {
                         message = Constant.GET_LIST_NHAN_KHAU_ALIVE_SUCCESSFULLY,
-                        data = arr
+                        data = dataExpected
                     }
                 );
             }
