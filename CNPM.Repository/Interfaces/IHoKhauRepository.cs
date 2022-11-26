@@ -10,6 +10,13 @@ namespace CNPM.Repository.Interfaces
 {
     public interface IHoKhauRepository
     {
-        public List<HoKhauEntity> GetListHoKhau();
+        public List<HoKhauEntity> GetListHoKhau(int index, int limit);
+        public HoKhauEntity GetHoKhau(string maHoKhau);
+        public string CreateHoKhau(HoKhauEntity hoKhau);
+        public string UpdateHoKhau(HoKhauEntity hoKhau);
+        public bool CheckMaHoKhauExisted(string maHoKhau);
+        public bool DeleteHoKhau(string maHoKhau, string userName);
+        public bool AddNhanKhauToHoKhau(List<int> danhSachNhanKhau, string maHoKhau, string userName);
+        public bool RemoveNhanKhauFromHoKhau(string maHoKhau, string userName);
     }
 }

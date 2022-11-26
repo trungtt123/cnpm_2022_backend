@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CNPM.Core.Entities;
+using CNPM.Core.Models.HoKhau;
 using CNPM.Core.Models.NhanKhau;
 
 namespace CNPM.Core.Models
@@ -21,6 +22,11 @@ namespace CNPM.Core.Models
             CreateMap<NhanKhauEntity, NhanKhauDto1001>();
             CreateMap<NhanKhauDto1002, NhanKhauEntity>();
             CreateMap<NhanKhauEntity, NhanKhauDto1003>();
+
+            CreateMap<HoKhauDto1000, HoKhauEntity>();
+            CreateMap<HoKhauEntity, HoKhauDto1001>();
+            CreateMap<HoKhauDto1002, HoKhauEntity>();
+            CreateMap<HoKhauEntity, HoKhauDto1003>();
 
             CreateMap<RoleEntity, RoleDto>();
         }

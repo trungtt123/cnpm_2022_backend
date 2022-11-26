@@ -12,7 +12,7 @@ namespace CNPM.Core.Models.NhanKhau
     public class NhanKhauDto1003 // body get list
     {
         [JsonProperty("maNhanKhau")]
-        public int maNhanKhau { get; set; }
+        public int MaNhanKhau { get; set; }
 
         [JsonProperty("hoTen")]
         public string HoTen { get; set; }

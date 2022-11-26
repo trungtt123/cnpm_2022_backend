@@ -43,19 +43,36 @@
         public const string GET_LIST_NHAN_KHAU_SUCCESSFULLY = "Lấy danh sách nhân khẩu thành công";
         public const string GET_LIST_NHAN_KHAU_FAILED = "Lấy danh sách nhân khẩu thất bại";
 
+        public const string GET_LIST_HO_KHAU_SUCCESSFULLY = "Lấy danh sách hộ khẩu thành công";
+        public const string GET_LIST_HO_KHAU_FAILED = "Lấy danh sách hộ khẩu thất bại";
+
         public const string GET_NHAN_KHAU_SUCCESSFULLY = "Lấy thông tin nhân khẩu thành công";
         public const string GET_NHAN_KHAU_FAILED = "Lấy thông tin nhân khẩu thất bại";
+
+        public const string GET_HO_KHAU_SUCCESSFULLY = "Lấy thông tin hộ khẩu thành công";
+        public const string GET_HO_KHAU_FAILED = "Lấy thông tin hộ khẩu thất bại";
 
         public const string CREATE_NHAN_KHAU_SUCCESSFULLY = "Thêm mới nhân khẩu thành công";
         public const string CREATE_NHAN_KHAU_FAILED = "Thêm mới nhân khẩu thất bại";
         public const string REASON_CCCD_EXISTED = "Căn cước công dân đã tồn tại";
 
+        public const string CREATE_HO_KHAU_SUCCESSFULLY = "Thêm mới hộ khẩu thành công";
+        public const string CREATE_HO_KHAU_FAILED = "Thêm mới hộ khẩu thất bại";
+        public const string REASON_MA_HO_KHAU_EXISTED = "Mã hộ khẩu đã tồn tại";
+
         public const string UPDATE_NHAN_KHAU_SUCCESSFULLY = "Cập nhật thông tin nhân khẩu thành công";
         public const string UPDATE_NHAN_KHAU_FAILED = "Cập nhật thông tin nhân khẩu thất bại";
         public const string MA_NHAN_KHAU_NOT_EXIST = "Mã nhân khẩu không tồn tại";
 
+        public const string UPDATE_HO_KHAU_SUCCESSFULLY = "Cập nhật thông tin hộ khẩu thành công";
+        public const string UPDATE_HO_KHAU_FAILED = "Cập nhật thông tin hộ khẩu thất bại";
+        public const string MA_HO_KHAU_NOT_EXIST = "Mã hộ khẩu không tồn tại";
+
         public const string DELETE_NHAN_KHAU_SUCCESSFULLY = "Xóa thông tin nhân khẩu thành công";
         public const string DELETE_NHAN_KHAU_FAILED = "Xoá thông tin nhân khẩu thất bại";
+
+        public const string DELETE_HO_KHAU_SUCCESSFULLY = "Xóa thông tin hộ khẩu thành công";
+        public const string DELETE_HO_KHAU_FAILED = "Xoá thông tin hộ khẩu thất bại";
 
 
         //public const string GET_PRODUCT_TYPE_SUCCESSFULLY = "GET_PRODUCT_TYPE_SUCCESSFULLY";

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using CNPM.Service.Implementations;
 using CNPM.Core.Models.NhanKhau;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using CNPM.Core.Models.HoKhau;
 
 namespace CNPM.Controllers.Authorize
 {
@@ -15,71 +16,63 @@ namespace CNPM.Controllers.Authorize
     [ApiController]
     [Route(Constant.API_BASE)]
 
-    public class NhanKhauController : ControllerBase
+    public class HoKhauController : ControllerBase
     {
-        private readonly INhanKhauService _nhanKhauService;
-        public NhanKhauController(INhanKhauService nhanKhauService)
+        private readonly IHoKhauService _hoKhauService;
+        public HoKhauController(IHoKhauService hoKhauService)
         {
-            _nhanKhauService = nhanKhauService;
+            _hoKhauService = hoKhauService;
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
-        [HttpGet("nhan-khau/danh-sach-nhan-khau")]
-        public IActionResult GetListNhanKhau(int index, int limit)
+        [HttpGet("ho-khau/danh-sach-ho-khau")]
+        public IActionResult GetListHoKhau(int index, int limit)
         {
-            return _nhanKhauService.GetListNhanKhau(index, limit);
+            return _hoKhauService.GetListHoKhau(index, limit);
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
-        [HttpGet("nhan-khau/danh-sach-nhan-khau-trong-ho-khau")]
-        public IActionResult GetListNhanKhauInHoKhau(string maHoKhau)
+        [HttpGet("ho-khau")]
+        public IActionResult GetHoKhau(string maHoKhau)
         {
-            return _nhanKhauService.GetListNhanKhauInHoKhau(maHoKhau);
-        }
-
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
-        [HttpGet("nhan-khau")]
-        public IActionResult GetNhanKhau(int maNhanKhau)
-        {
-            return _nhanKhauService.GetNhanKhau(maNhanKhau);
+            return _hoKhauService.GetHoKhau(maHoKhau);
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator)]
-        [HttpPost("nhan-khau")]
-        public IActionResult CreateNhanKhau([FromBody] NhanKhauDto1000 nhanKhau)
+        [HttpPost("ho-khau")]
+        public IActionResult CreateHoKhau([FromBody] HoKhauDto1000 hoKhau)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(nhanKhau);
+                return BadRequest(hoKhau);
             }
             var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", string.Empty);
-            return _nhanKhauService.CreateNhanKhau(token, nhanKhau);
+            return _hoKhauService.CreateHoKhau(token, hoKhau);
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator)]
-        [HttpPut("nhan-khau")]
-        public IActionResult UpdateNhanKhau([FromBody] NhanKhauDto1002 nhanKhau, int maNhanKhau)
+        [HttpPut("ho-khau")]
+        public IActionResult UpdateHoKhau([FromBody] HoKhauDto1002 hoKhau, string maHoKhau)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(nhanKhau);
+                return BadRequest(hoKhau);
             }
             var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", string.Empty);
-            return _nhanKhauService.UpdateNhanKhau(token, maNhanKhau, nhanKhau);
+            return _hoKhauService.UpdateHoKhau(token, maHoKhau, hoKhau);
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator)]
-        [HttpDelete("nhan-khau")]
-        public IActionResult DeleteNhanKhau(int maNhanKhau, int version)
+        [HttpDelete("ho-khau")]
+        public IActionResult DeleteHoKhau(string maHoKhau, int version)
         {
             var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", string.Empty);
-            return _nhanKhauService.DeleteNhanKhau(maNhanKhau, token, version);
+            return _hoKhauService.DeleteHoKhau(token, maHoKhau, version);
         }
 
     }
