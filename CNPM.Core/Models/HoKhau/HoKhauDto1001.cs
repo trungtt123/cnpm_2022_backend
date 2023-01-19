@@ -1,5 +1,6 @@
 ﻿using CNPM.Core.Entities;
 using CNPM.Core.Models.NhanKhau;
+using CNPM.Core.Models.LichSu;
 using CNPM.Core.Utils;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
@@ -33,6 +34,9 @@ namespace CNPM.Core.Models.HoKhau
 
         [JsonProperty("danhSachNhanKhau")]
         public List<NhanKhauDto1001> DanhSachNhanKhau { get; set;}
+
+        [JsonProperty("lichSu")]
+        public List<LichSuDto1000> LichSu { get; set; } 
 
         [JsonProperty("createTime")]
         public DateTime CreateTime { get; set; }

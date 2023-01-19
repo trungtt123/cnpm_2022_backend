@@ -54,6 +54,19 @@ namespace CNPM.Repository.Implementations
                 throw new Exception(ex.Message);
             }
         }
+        public List<LichSuEntity> GetLichSu(string maHoKhau)
+        {
+            try
+            {
+                List<LichSuEntity> lichSu = _dbcontext.LichSu.Where(
+                    o => o.Delete == Constant.NOT_DELETE && o.MaHoKhau == maHoKhau).ToList();
+                return lichSu;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public string CreateHoKhau(HoKhauEntity hoKhau)
         {
             try
@@ -80,6 +93,7 @@ namespace CNPM.Repository.Implementations
             try
             {
                 // them nhan khau moi vao ho khau
+                string listMaNhanKhau = "";
                 for (var i = 0; i < danhSachNhanKhau.Count; i++)
                 {
                     var nhanKhau = _dbcontext.NhanKhau.Where(
@@ -90,10 +104,25 @@ namespace CNPM.Repository.Implementations
                         nhanKhau.UserUpdate = userName;
                         nhanKhau.UpdateTime = DateTime.Now;
                         nhanKhau.Version++;
+                        if (i == 0) listMaNhanKhau += danhSachNhanKhau[i].ToString();
+                        else listMaNhanKhau += ", " + danhSachNhanKhau[i].ToString();
                     }
-                    
                 }
                 _dbcontext.SaveChanges();
+                LichSuEntity lichSu = new LichSuEntity();
+                if (listMaNhanKhau != "")
+                {
+                    lichSu.CreateTime = DateTime.Now;
+                    lichSu.UpdateTime = DateTime.Now;
+                    lichSu.UserUpdate = userName;
+                    lichSu.UserCreate = userName;
+                    lichSu.MaHoKhau = maHoKhau;
+                    lichSu.NoiDung = "Cập nhật danh sách nhân khẩu trong hộ khẩu: " + listMaNhanKhau;
+                    lichSu.Version = 0;
+                    lichSu.Delete = 0;
+                    _dbcontext.LichSu.Add(lichSu);
+                    _dbcontext.SaveChanges();
+                }
                 return true;
             }
             catch(Exception ex)
@@ -177,11 +206,39 @@ namespace CNPM.Repository.Implementations
                 {
                     hoKhau.UserUpdate = newHoKhau.UserUpdate;
                     hoKhau.UpdateTime = newHoKhau.UpdateTime;
-                    hoKhau.DiaChiThuongTru = newHoKhau.DiaChiThuongTru;
-                    hoKhau.NoiCap = newHoKhau.NoiCap;
-                    hoKhau.NgayCap = newHoKhau.NgayCap;
+                    /* thong tin can luu lai */
+                    string ghiChu = "";
+                    if (hoKhau.DiaChiThuongTru != newHoKhau.DiaChiThuongTru)
+                    {
+                        ghiChu += "Cập nhật địa chỉ thường trú thành " + newHoKhau.DiaChiThuongTru + "; ";
+                        hoKhau.DiaChiThuongTru = newHoKhau.DiaChiThuongTru;
+                    }
+                    if (hoKhau.NoiCap != newHoKhau.NoiCap)
+                    {
+                        ghiChu += "Cập nhật nơi cấp thành " + newHoKhau.NoiCap + "; ";
+                        hoKhau.NoiCap = newHoKhau.NoiCap;
+                    }
+                    if (hoKhau.NgayCap != newHoKhau.NgayCap)
+                    {
+                        ghiChu += "Cập nhật ngày cấp thành " + newHoKhau.NgayCap.ToString() + "; ";
+                        hoKhau.NgayCap = newHoKhau.NgayCap;
+                    }
                     hoKhau.Version = newHoKhau.Version;
                     _dbcontext.SaveChanges();
+                    LichSuEntity lichSu = new LichSuEntity();
+                    if (ghiChu != "")
+                    {
+                        lichSu.CreateTime = DateTime.Now;
+                        lichSu.UpdateTime = DateTime.Now;
+                        lichSu.UserCreate = newHoKhau.UserUpdate;
+                        lichSu.UserUpdate = newHoKhau.UserUpdate;
+                        lichSu.MaHoKhau = newHoKhau.MaHoKhau;
+                        lichSu.NoiDung = ghiChu;
+                        lichSu.Version = 0;
+                        lichSu.Delete = 0;
+                        _dbcontext.LichSu.Add(lichSu);
+                        _dbcontext.SaveChanges();
+                    }
                     return newHoKhau.MaHoKhau;
                 }
                 else return "";

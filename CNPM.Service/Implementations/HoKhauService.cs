@@ -16,6 +16,7 @@ using CNPM.Core.Models.NhanKhau;
 using CNPM.Repository.Implementations;
 using System.Collections.Generic;
 using CNPM.Core.Models.HoKhau;
+using CNPM.Core.Models.LichSu;
 
 namespace CNPM.Service.Implementations
 {
@@ -71,7 +72,10 @@ namespace CNPM.Service.Implementations
                 var hoKhau1001 = _mapper.Map<HoKhauEntity, HoKhauDto1001>(hoKhau);
                 var listNhanKhauEntity = _nhanKhauRepository.GetListNhanKhauInHoKhau(maHoKhau);
                 var listNhanKhauDto = _mapper.Map<List<NhanKhauEntity>, List<NhanKhauDto1001> >(listNhanKhauEntity);
+                var lichSuEntity = _hoKhauRepository.GetLichSu(maHoKhau);
+                var lichSuDto= _mapper.Map<List<LichSuEntity>, List<LichSuDto1000>>(lichSuEntity);
                 hoKhau1001.DanhSachNhanKhau = listNhanKhauDto;
+                hoKhau1001.LichSu = lichSuDto;
                 return new OkObjectResult(new {
                     message = Constant.GET_HO_KHAU_SUCCESSFULLY,
                     data = hoKhau1001

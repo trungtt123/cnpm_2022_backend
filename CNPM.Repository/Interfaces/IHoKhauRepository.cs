@@ -12,6 +12,7 @@ namespace CNPM.Repository.Interfaces
     {
         public List<HoKhauEntity> GetListHoKhau(int index, int limit);
         public HoKhauEntity GetHoKhau(string maHoKhau);
+        public List<LichSuEntity> GetLichSu(string maHoKhau);
         public string CreateHoKhau(HoKhauEntity hoKhau);
         public string UpdateHoKhau(HoKhauEntity hoKhau);
         public bool CheckMaHoKhauExisted(string maHoKhau);

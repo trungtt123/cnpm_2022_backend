@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CNPM.Core.Entities;
 using CNPM.Core.Models.HoKhau;
+using CNPM.Core.Models.LichSu;
 using CNPM.Core.Models.NhanKhau;
 using CNPM.Core.Models.TamTru;
 using CNPM.Core.Models.TamVang;
@@ -29,6 +30,7 @@ namespace CNPM.Core.Models
             CreateMap<HoKhauEntity, HoKhauDto1001>();
             CreateMap<HoKhauDto1002, HoKhauEntity>();
             CreateMap<HoKhauEntity, HoKhauDto1003>();
+            CreateMap<LichSuEntity, LichSuDto1000>();
 
             CreateMap<TamTruDto1000, TamTruEntity>();
             CreateMap<TamTruEntity, TamTruDto1001>();
