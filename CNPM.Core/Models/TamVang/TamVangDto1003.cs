@@ -18,6 +18,12 @@ namespace CNPM.Core.Models.TamVang
         [JsonProperty("maNhanKhau")]
         public int MaNhanKhau { get; set; }
 
+        [JsonProperty("hoTen")]
+        public string HoTen { get; set; }
+
+        [JsonProperty("canCuocCongDan")]
+        public string CanCuocCongDan { get; set; }
+
         [JsonProperty("thoiHan")]
         public DateTime ThoiHan { get; set; }
 

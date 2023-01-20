@@ -40,6 +40,12 @@ namespace CNPM.Service.Implementations
             {
                 var listTamVang = _tamVangRepository.GetListTamVang(index, limit);
                 var arr = _mapper.Map<List<TamVangEntity>, List<TamVangDto1003>>(listTamVang);
+                foreach(var item in arr)
+                {
+                    var nhanKhau = _nhanKhauRepository.GetNhanKhau(item.MaNhanKhau);
+                    item.HoTen = nhanKhau.HoTen;
+                    item.CanCuocCongDan = nhanKhau.CanCuocCongDan;
+                }
                 return new OkObjectResult(
                     new
                     {
@@ -68,6 +74,10 @@ namespace CNPM.Service.Implementations
                     );
 
                 var tamVang1001 = _mapper.Map<TamVangEntity, TamVangDto1001>(tamVang);
+
+                var nhanKhau = _nhanKhauRepository.GetNhanKhau(tamVang.MaNhanKhau);
+                tamVang1001.HoTen = nhanKhau.HoTen;
+                tamVang1001.CanCuocCongDan = nhanKhau.CanCuocCongDan;
 
                 return new OkObjectResult(new {
                     message = Constant.GET_TAM_VANG_SUCCESSFULLY,
