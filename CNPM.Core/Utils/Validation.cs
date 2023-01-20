@@ -18,4 +18,16 @@ namespace CNPM.Core.Utils
                 return new ValidationResult("Trang thai is not valid, trang thai = 0 as die, = 1 as alive");
         }
     }
+
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    public class LoaiKhoanThuAttribute : ValidationAttribute
+    {
+        public static ValidationResult IsKhoanThu(int khoanThu)
+        {
+            if (khoanThu == 0 || khoanThu == 1) // khoản thu = 0 - ủng hộ, 1 - phí ve sinh
+                return ValidationResult.Success;
+            else
+                return new ValidationResult("Khoan thu is not valid, khoan thu = 0 as ung ho, = 1 as phi ve sinh");
+        }
+    }
 }

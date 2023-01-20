@@ -42,6 +42,11 @@ namespace CNPM.Service.Implementations
             {
                 var listHoKhau = _hoKhauRepository.GetListHoKhau(index, limit);
                 var arr = _mapper.Map<List<HoKhauEntity>, List<HoKhauDto1003>>(listHoKhau);
+                foreach (HoKhauDto1003 hoKhau in arr)
+                {
+                    var listNhanKhauEntity = _nhanKhauRepository.GetListNhanKhauInHoKhau(hoKhau.MaHoKhau);
+                    hoKhau.SoThanhVien = listNhanKhauEntity.FindAll(o => o.TrangThai == Constant.ALIVE).ToList().Count();
+                }
                 return new OkObjectResult(
                     new
                     {
@@ -75,6 +80,7 @@ namespace CNPM.Service.Implementations
                 var lichSuEntity = _hoKhauRepository.GetLichSu(maHoKhau);
                 var lichSuDto= _mapper.Map<List<LichSuEntity>, List<LichSuDto1000>>(lichSuEntity);
                 hoKhau1001.DanhSachNhanKhau = listNhanKhauDto;
+                hoKhau1001.SoThanhVien = listNhanKhauDto.FindAll(o => o.TrangThai == Constant.ALIVE).ToList().Count();
                 hoKhau1001.LichSu = lichSuDto;
                 return new OkObjectResult(new {
                     message = Constant.GET_HO_KHAU_SUCCESSFULLY,

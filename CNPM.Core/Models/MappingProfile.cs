@@ -3,8 +3,10 @@ using CNPM.Core.Entities;
 using CNPM.Core.Models.HoKhau;
 using CNPM.Core.Models.LichSu;
 using CNPM.Core.Models.NhanKhau;
+using CNPM.Core.Models.KhoanThu;
 using CNPM.Core.Models.TamTru;
 using CNPM.Core.Models.TamVang;
+using CNPM.Core.Models.HoaDon;
 
 namespace CNPM.Core.Models
 {
@@ -25,6 +27,13 @@ namespace CNPM.Core.Models
             CreateMap<NhanKhauEntity, NhanKhauDto1001>();
             CreateMap<NhanKhauDto1002, NhanKhauEntity>();
             CreateMap<NhanKhauEntity, NhanKhauDto1003>();
+
+            CreateMap<KhoanThuDto1000, KhoanThuEntity>();
+            CreateMap<KhoanThuEntity, KhoanThuDto1001>();
+            CreateMap<KhoanThuDto1002, KhoanThuEntity>();
+            CreateMap<KhoanThuEntity, KhoanThuDto1003>();
+            CreateMap<KhoanThuTheoHoEntity, KhoanThuDto1004>();
+            CreateMap<HoaDonDto1000, HoaDonEntity>();
 
             CreateMap<HoKhauDto1000, HoKhauEntity>();
             CreateMap<HoKhauEntity, HoKhauDto1001>();

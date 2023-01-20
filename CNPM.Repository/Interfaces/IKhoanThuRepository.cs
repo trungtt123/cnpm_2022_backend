@@ -13,10 +13,15 @@ namespace CNPM.Repository.Interfaces
     {
         public List<KhoanThuEntity> GetListKhoanThu(int index, int limit);
         public KhoanThuEntity GetKhoanThu(int maKhoanThu);
-        public int CreateNhanKhau(NhanKhauEntity nhanKhau);
-        public bool CheckExistCanCuocCongDan(string CanCuocCongDan);
-        public int UpdateNhanKhau(NhanKhauEntity nhanKhau);
-        public bool DeleteNhanKhau(int maNhanKhau, string userName);
-
+        //thêm sửa xóa thông tin khoản thu 
+        public int CreateKhoanThu(KhoanThuEntity khoanThu);
+        public int UpdateKhoanThu(KhoanThuEntity newKhoanThu);
+        public bool DeleteKhoanThu(int maKhoanThu, string userName);
+        //tạo tự động khoản thu theo họ theo mã khoản thu
+        public int CreateKhoanThuTheoHo(int maKhoanThu, string userName);
+        //lấy danh sách khoản thu theo hộ theo mã khoản thu
+        public List<KhoanThuTheoHoEntity> GetKhoanThuTheoHo(int maKhoanThu);
+        public int ThanhToan(HoaDonEntity hoaDon);
+        public List<HoaDonEntity> GetHoaDonKhoanThuTheoHo(int maKhoanThuTheoHo);
     }
 }

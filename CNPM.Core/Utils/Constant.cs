@@ -47,6 +47,9 @@
         public const string GET_LIST_NHAN_KHAU_NOT_HAVE_HO_KHAU_SUCCESSFULLY = "Lấy danh sách nhân khẩu chưa có hộ khẩu thành công";
         public const string GET_LIST_NHAN_KHAU_FAILED = "Lấy danh sách nhân khẩu thất bại";
 
+        public const string GET_LIST_KHOAN_THU_SUCCESSFULLY = "Lấy danh sách khoản thu thành công";
+        public const string GET_LIST_KHOAN_THU_FAILED = "Lấy danh sách khoản thu thất bại";
+
         public const string GET_LIST_HO_KHAU_SUCCESSFULLY = "Lấy danh sách hộ khẩu thành công";
         public const string GET_LIST_HO_KHAU_FAILED = "Lấy danh sách hộ khẩu thất bại";
 
@@ -58,6 +61,12 @@
 
         public const string GET_NHAN_KHAU_SUCCESSFULLY = "Lấy thông tin nhân khẩu thành công";
         public const string GET_NHAN_KHAU_FAILED = "Lấy thông tin nhân khẩu thất bại";
+
+        public const string GET_KHOAN_THU_SUCCESSFULLY = "Lấy thông tin khoản thu thành công";
+        public const string GET_KHOAN_THU_FAILED = "Lấy thông tin khoản thu thất bại";
+
+        public const string GET_KHOAN_THU_THEO_HO_SUCCESSFULLY = "Lấy thông tin khoản thu theo hộ thành công";
+        public const string GET_KHOAN_THU_THEO_HO_FAILED = "Lấy thông tin khoản thu theo hộ thất bại";
 
         public const string GET_HO_KHAU_SUCCESSFULLY = "Lấy thông tin hộ khẩu thành công";
         public const string GET_HO_KHAU_FAILED = "Lấy thông tin hộ khẩu thất bại";
@@ -71,6 +80,12 @@
         public const string CREATE_NHAN_KHAU_SUCCESSFULLY = "Thêm mới nhân khẩu thành công";
         public const string CREATE_NHAN_KHAU_FAILED = "Thêm mới nhân khẩu thất bại";
         public const string REASON_CCCD_EXISTED = "Căn cước công dân đã tồn tại";
+
+        public const string CREATE_KHOAN_THU_SUCCESSFULLY = "Thêm mới khoản thu thành công";
+        public const string CREATE_KHOAN_THU_FAILED = "Thêm mới khoản thu thất bại";
+
+        public const string CREATE_KHOAN_THU_THEO_HO_SUCCESSFULLY = "Thêm mới khoản thu theo hộ thành công";
+        public const string CREATE_KHOAN_THU_THEO_HO_FAILED = "Thêm mới khoản thu theo hộ thất bại";
 
         public const string CREATE_HO_KHAU_SUCCESSFULLY = "Thêm mới hộ khẩu thành công";
         public const string CREATE_HO_KHAU_FAILED = "Thêm mới hộ khẩu thất bại";
@@ -89,6 +104,10 @@
         public const string MA_NHAN_KHAU_NOT_EXIST = "Mã nhân khẩu không tồn tại";
         public const string NHAN_KHAU_IS_DIED = "Nhân khẩu đã qua đời";
 
+        public const string UPDATE_KHOAN_THU_SUCCESSFULLY = "Cập nhật thông tin khoản thu thành công";
+        public const string UPDATE_KHOAN_THU_FAILED = "Cập nhật thông tin khoản thu thất bại";
+        public const string MA_KHOAN_THU_NOT_EXIST = "Mã khoản thu không tồn tại";
+
         public const string UPDATE_TAM_TRU_SUCCESSFULLY = "Cập nhật thông tin tạm trú thành công";
         public const string UPDATE_TAM_TRU_FAILED = "Cập nhật thông tin tạm trú thất bại";
         public const string MA_TAM_TRU_NOT_EXIST = "Mã tạm trú không tồn tại";
@@ -104,6 +123,9 @@
         public const string DELETE_NHAN_KHAU_SUCCESSFULLY = "Xóa thông tin nhân khẩu thành công";
         public const string DELETE_NHAN_KHAU_FAILED = "Xoá thông tin nhân khẩu thất bại";
 
+        public const string DELETE_KHOAN_THU_SUCCESSFULLY = "Xóa thông tin khoản thu thành công";
+        public const string DELETE_KHOAN_THU_FAILED = "Xoá thông tin khoản thu thất bại";
+
         public const string DELETE_HO_KHAU_SUCCESSFULLY = "Xóa thông tin hộ khẩu thành công";
         public const string DELETE_HO_KHAU_FAILED = "Xoá thông tin hộ khẩu thất bại";
 
@@ -113,6 +135,8 @@
         public const string DELETE_TAM_VANG_SUCCESSFULLY = "Xóa thông tin tạm vắng thành công";
         public const string DELETE_TAM_VANG_FAILED = "Xoá thông tin tạm vắng thất bại";
 
+        public const string THANH_TOAN_SUCCESSFULLY = "Thanh toán thành công";
+        public const string THANH_TOAN_FAILED = "Thanh toán thất bại";
 
         public const string LOGOUT_FAILED = "Đăng xuất thất bại";
         public const string DEFAULT_PASSWORD = "123456";

@@ -14,7 +14,7 @@ namespace CNPM.Core.Entities
         public int MaKhoanThu { get; set; }
         [ForeignKey("MaKhoanThu")]
         public KhoanThuEntity KhoanThu { get; set; }
-        public int SoTien { get; set; }
+        public int? SoTien { get; set; }
 
     }
 }

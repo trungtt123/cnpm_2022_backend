@@ -13,10 +13,9 @@ namespace CNPM.Core.Entities
         public string TenKhoanThu { get; set; }
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
-        public int LoaiKhoanThu { get; set; }
-
-        [StringLength(100)]
-        public string GhiChu { get; set; }
+        public int LoaiKhoanThu { get; set; } // 0 - ủng hộ , 1 - phí vệ sinh
+        [StringLength(200)]
+        public string? GhiChu { get; set; }
 
     }
 }

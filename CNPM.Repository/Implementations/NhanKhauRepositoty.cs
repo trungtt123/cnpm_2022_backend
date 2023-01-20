@@ -87,7 +87,7 @@ namespace CNPM.Repository.Implementations
             try
             {
                 List<NhanKhauEntity> arr = _dbcontext.NhanKhau.Where(
-                    o => o.Delete == Constant.NOT_DELETE 
+                    o => o.Delete == Constant.NOT_DELETE
                     && o.MaHoKhau == maHoKhau
                 ).ToList();
                 return arr;
