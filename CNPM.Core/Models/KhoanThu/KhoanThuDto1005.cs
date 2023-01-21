@@ -16,11 +16,11 @@ namespace CNPM.Core.Models.KhoanThu
         [JsonProperty("maKhoanThu")]
         public int MaKhoanThu { get; set; }
 
-        [JsonProperty("maHoKhau")]
-        public string MaHoKhau { get; set; }
+        [JsonProperty("tenKhoanThu")]
+        public string TenKhoanThu { get; set; }
 
         [JsonProperty("soTien")]   
-        public int SoTien { get; set; }
+        public int? SoTien { get; set; }
 
         [JsonProperty("soTienDaNop")]
         public int SoTienDaNop { get; set; }

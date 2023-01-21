@@ -40,15 +40,15 @@ namespace CNPM.Controllers.Authorize
             return _khoanThuService.GetKhoanThuTheoHo(maKhoanThu);
         }
 
-        /*
+        
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
         [HttpGet("khoan-thu-theo-ho")]
-        public IActionResult GetKhoanThuTheoHo(int maHoKhau)
+        public IActionResult GetKhoanThuTheoHo(string maHoKhau)
         {
-            return _khoanThuService.GetCacKhoanThuCuaHo(maHoKhau);
+            return _khoanThuService.GetCacKhoanThuDaNopCuaHo(maHoKhau);
         }
-        */
+        
         
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
         Roles = Constant.Administrator)]

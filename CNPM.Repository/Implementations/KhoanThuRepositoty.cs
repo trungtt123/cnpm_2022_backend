@@ -146,6 +146,20 @@ namespace CNPM.Repository.Implementations
                 throw new Exception(ex.Message);
             }
         }
+        public List<KhoanThuTheoHoEntity> GetCacKhoanThuCuaHo(string maHoKhau)
+        {
+            try
+            {
+                var khoanThuTheoHo = _dbcontext.KhoanThuTheoHo.Where(
+                   o => o.MaHoKhau == maHoKhau && o.Delete == Constant.NOT_DELETE).ToList();
+
+                return khoanThuTheoHo;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public int UpdateKhoanThu(KhoanThuEntity newKhoanThu)
         {
             try

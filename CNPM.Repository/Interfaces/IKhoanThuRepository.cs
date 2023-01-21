@@ -21,6 +21,8 @@ namespace CNPM.Repository.Interfaces
         public int CreateKhoanThuTheoHo(int maKhoanThu, string userName);
         //lấy danh sách khoản thu theo hộ theo mã khoản thu
         public List<KhoanThuTheoHoEntity> GetKhoanThuTheoHo(int maKhoanThu);
+        //lấy danh sách khoản thu theo hộ theo mã hộ khẩu
+        public List<KhoanThuTheoHoEntity> GetCacKhoanThuCuaHo(string maHoKhau);
         public int ThanhToan(HoaDonEntity hoaDon);
         public List<HoaDonEntity> GetHoaDonKhoanThuTheoHo(int maKhoanThuTheoHo);
     }

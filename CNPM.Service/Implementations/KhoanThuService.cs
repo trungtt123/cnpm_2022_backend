@@ -119,6 +119,58 @@ namespace CNPM.Service.Implementations
                 throw new Exception(ex.Message);
             }
         }
+        public IActionResult GetKhoanThuTheoHo(int maKhoanThu)
+        {
+            try
+            {
+                var khoanThu = _khoanThuRepository.GetKhoanThu(maKhoanThu);
+                if (khoanThu == null)
+                {
+                    return new BadRequestObjectResult(new
+                    {
+                        message = Constant.GET_KHOAN_THU_THEO_HO_FAILED,
+                        reason = Constant.MA_KHOAN_THU_NOT_EXIST
+                    });
+                }
+                var khoanThuTheoHo = _khoanThuRepository.GetKhoanThuTheoHo(maKhoanThu);
+
+                var arr = _mapper.Map<List<KhoanThuTheoHoEntity>, List<KhoanThuDto1004>>(khoanThuTheoHo);
+                var tongCanThu = 0;
+                var tongDaThu = 0;
+                foreach (var item in arr)
+                {
+                    var hoaDon = _khoanThuRepository.GetHoaDonKhoanThuTheoHo(item.MaKhoanThuTheoHo);
+                    var soTienDaNop = 0;
+                    foreach (var iHoaDon in hoaDon)
+                    {
+                        soTienDaNop += iHoaDon.SoTienDaNop;
+                    }
+                    item.SoTienDaNop = soTienDaNop;
+                    tongDaThu += soTienDaNop;
+                    tongCanThu += item.SoTien;
+                }
+                return new OkObjectResult(new
+                {
+                    message = Constant.GET_KHOAN_THU_THEO_HO_SUCCESSFULLY,
+                    data = new
+                    {
+                        maKhoanThu = khoanThu.MaKhoanThu,
+                        tenKhoanThu = khoanThu.TenKhoanThu,
+                        thoiGianBatDau = khoanThu.ThoiGianBatDau,
+                        thoiGianKetThuc = khoanThu.ThoiGianKetThuc,
+                        loaiKhoanThu = khoanThu.LoaiKhoanThu,
+                        ghiChu = khoanThu.GhiChu,
+                        tongCanThu = tongCanThu,
+                        tongDaThu = tongDaThu,
+                        data = arr
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public IActionResult CreateKhoanThuTheoHo(string token, int maKhoanThu)
         {
             try
@@ -148,51 +200,33 @@ namespace CNPM.Service.Implementations
                 throw new Exception(ex.Message);
             }
         }
-        public IActionResult GetKhoanThuTheoHo(int maKhoanThu)
+        public IActionResult GetCacKhoanThuDaNopCuaHo(string maHoKhau)
         {
             try
             {
-                var khoanThu = _khoanThuRepository.GetKhoanThu(maKhoanThu);
-                if (khoanThu == null)
+                List<KhoanThuTheoHoEntity> listKhoanThuTheoHo = _khoanThuRepository.GetCacKhoanThuCuaHo(maHoKhau);
+                List<KhoanThuDto1005> arr = new List<KhoanThuDto1005>();
+                foreach (var khoanThuTheoHo in listKhoanThuTheoHo)
                 {
-                    return new BadRequestObjectResult(new
-                    {
-                        message = Constant.GET_KHOAN_THU_THEO_HO_FAILED,
-                        reason = Constant.MA_KHOAN_THU_NOT_EXIST
-                    });
-                }
-                var khoanThuTheoHo = _khoanThuRepository.GetKhoanThuTheoHo(maKhoanThu);
-            
-                var arr = _mapper.Map<List<KhoanThuTheoHoEntity>, List<KhoanThuDto1004>>(khoanThuTheoHo);
-                var tongCanThu = 0;
-                var tongDaThu = 0;
-                foreach(var item in arr)
-                {
-                    var hoaDon = _khoanThuRepository.GetHoaDonKhoanThuTheoHo(item.MaKhoanThuTheoHo);
+                    KhoanThuEntity khoanThuEntity = _khoanThuRepository.GetKhoanThu(khoanThuTheoHo.MaKhoanThu);
+                    KhoanThuDto1005 khoanThu = new KhoanThuDto1005();
+                    khoanThu.MaKhoanThu = khoanThuEntity.MaKhoanThu;
+                    khoanThu.TenKhoanThu = khoanThuEntity.TenKhoanThu;
+                    khoanThu.SoTien = khoanThuTheoHo.SoTien;
+                    var hoaDon = _khoanThuRepository.GetHoaDonKhoanThuTheoHo(khoanThuTheoHo.MaKhoanThuTheoHo);
                     var soTienDaNop = 0;
                     foreach (var iHoaDon in hoaDon)
                     {
                         soTienDaNop += iHoaDon.SoTienDaNop;
                     }
-                    item.SoTienDaNop = soTienDaNop;
-                    tongDaThu += soTienDaNop;
-                    tongCanThu += item.SoTien;
+                    khoanThu.SoTienDaNop = soTienDaNop;
+                    arr.Add(khoanThu);
                 }
+           
                 return new OkObjectResult(new
                 {
                     message = Constant.GET_KHOAN_THU_THEO_HO_SUCCESSFULLY,
-                    data = new
-                    {
-                        maKhoanThu = khoanThu.MaKhoanThu,
-                        tenKhoanThu = khoanThu.TenKhoanThu,
-                        thoiGianBatDau = khoanThu.ThoiGianBatDau,
-                        thoiGianKetThuc = khoanThu.ThoiGianKetThuc,
-                        loaiKhoanThu = khoanThu.LoaiKhoanThu,
-                        ghiChu = khoanThu.GhiChu,
-                        tongCanThu = tongCanThu,
-                        tongDaThu = tongDaThu,
-                        data = arr
-                    }
+                    data = arr
                 });
             }
             catch (Exception ex)

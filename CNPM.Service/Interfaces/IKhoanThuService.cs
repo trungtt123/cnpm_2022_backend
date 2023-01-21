@@ -18,7 +18,7 @@ namespace CNPM.Service.Interfaces
         public IActionResult CreateKhoanThu(string token, KhoanThuDto1000 khoanThu);
         public IActionResult CreateKhoanThuTheoHo(string token, int maKhoanThu);
         public IActionResult GetKhoanThuTheoHo(int maKhoanThu);
-        /*public IActionResult GetCacKhoanThuCuaHo(int maHoKhau);*/
+        public IActionResult GetCacKhoanThuDaNopCuaHo(string maHoKhau);
         public IActionResult UpdateKhoanThu(string token, int maKhoanThu, KhoanThuDto1002 khoanThu);
         public IActionResult DeleteKhoanThu(int maKhoanThu, string token, int version);
         public IActionResult ThanhToan(string token, HoaDonDto1000 hoaDon);
