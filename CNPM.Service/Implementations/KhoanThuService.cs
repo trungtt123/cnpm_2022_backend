@@ -162,6 +162,7 @@ namespace CNPM.Service.Implementations
                         ghiChu = khoanThu.GhiChu,
                         tongCanThu = tongCanThu,
                         tongDaThu = tongDaThu,
+                        version = khoanThu.Version,
                         data = arr
                     }
                 });
@@ -246,7 +247,7 @@ namespace CNPM.Service.Implementations
                     reason = Constant.MA_KHOAN_THU_NOT_EXIST
                 });
 
-                if (khoanThu.Version != khoanThu.Version) return new BadRequestObjectResult(new
+                if (newKhoanThu.Version != khoanThu.Version) return new BadRequestObjectResult(new
                 {
                     message = Constant.UPDATE_KHOAN_THU_FAILED,
                     reason = Constant.DATA_UPDATED_BEFORE
