@@ -215,6 +215,7 @@ namespace CNPM.Service.Implementations
                     khoanThu.TenKhoanThu = khoanThuEntity.TenKhoanThu;
                     khoanThu.SoTien = khoanThuTheoHo.SoTien;
                     khoanThu.MaKhoanThuTheoHo = khoanThuTheoHo.MaKhoanThuTheoHo;
+                    khoanThu.LoaiKhoanThu = khoanThuEntity.LoaiKhoanThu;
                     var hoaDon = _khoanThuRepository.GetHoaDonKhoanThuTheoHo(khoanThuTheoHo.MaKhoanThuTheoHo);
                     var soTienDaNop = 0;
                     foreach (var iHoaDon in hoaDon)
