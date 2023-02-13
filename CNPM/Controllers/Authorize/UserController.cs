@@ -8,7 +8,7 @@ using CNPM.Service.Implementations;
 
 namespace CNPM.Controllers.Authorize
 {
-    [VerifyToken]
+    //[VerifyToken]
     [Authorize]
     [ApiController]
     [Route(Constant.API_BASE)]

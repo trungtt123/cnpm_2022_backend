@@ -11,7 +11,7 @@ using CNPM.Core.Models.HoaDon;
 
 namespace CNPM.Controllers.Authorize
 {
-    [VerifyToken]
+    //[VerifyToken]
     [Authorize]
     [ApiController]
     [Route(Constant.API_BASE)]
