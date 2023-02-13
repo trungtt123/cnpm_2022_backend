@@ -24,7 +24,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpGet("tam-vang/danh-sach-tam-vang")]
         public IActionResult GetListTamVang(int index, int limit)
         {
@@ -32,7 +32,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpGet("tam-vang")]
         public IActionResult GetTamVang(int maTamVang)
         {
@@ -40,7 +40,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpPost("tam-vang")]
         public IActionResult CreateTamVang([FromBody] TamVangDto1000 tamVang)
         {
@@ -53,7 +53,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpPut("tam-vang")]
         public IActionResult UpdateTamVang([FromBody] TamVangDto1002 tamVang, int maTamVang)
         {
@@ -66,7 +66,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpDelete("tam-vang")]
         public IActionResult DeleteTamVang(int maTamVang, int version)
         {

@@ -24,7 +24,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpGet("nhan-khau/danh-sach-nhan-khau")]
         public IActionResult GetListNhanKhau(int index, int limit)
         {
@@ -32,7 +32,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpGet("nhan-khau/danh-sach-nhan-khau-chua-dang-ky-tam-vang")]
         public IActionResult GetListNhanKhauAlive(int index, int limit)
         {
@@ -40,7 +40,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpGet("nhan-khau/danh-sach-nhan-khau-chua-co-ho-khau")]
         public IActionResult GetListNhanKhauNotHaveHoKhau(int index, int limit)
         {
@@ -48,7 +48,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpGet("nhan-khau/danh-sach-nhan-khau-trong-ho-khau")]
         public IActionResult GetListNhanKhauInHoKhau(string maHoKhau)
         {
@@ -56,7 +56,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpGet("nhan-khau")]
         public IActionResult GetNhanKhau(int maNhanKhau)
         {
@@ -64,7 +64,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpPost("nhan-khau")]
         public IActionResult CreateNhanKhau([FromBody] NhanKhauDto1000 nhanKhau)
         {
@@ -77,7 +77,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpPut("nhan-khau")]
         public IActionResult UpdateNhanKhau([FromBody] NhanKhauDto1002 nhanKhau, int maNhanKhau)
         {
@@ -90,7 +90,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpDelete("nhan-khau")]
         public IActionResult DeleteNhanKhau(int maNhanKhau, int version)
         {

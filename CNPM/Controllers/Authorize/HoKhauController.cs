@@ -25,7 +25,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpGet("ho-khau/danh-sach-ho-khau")]
         public IActionResult GetListHoKhau(int index, int limit)
         {
@@ -33,7 +33,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpGet("ho-khau")]
         public IActionResult GetHoKhau(string maHoKhau)
         {
@@ -41,7 +41,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpPost("ho-khau")]
         public IActionResult CreateHoKhau([FromBody] HoKhauDto1000 hoKhau)
         {
@@ -54,7 +54,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpPut("ho-khau")]
         public IActionResult UpdateHoKhau([FromBody] HoKhauDto1002 hoKhau, string maHoKhau)
         {
@@ -67,7 +67,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpDelete("ho-khau")]
         public IActionResult DeleteHoKhau(string maHoKhau, int version)
         {

@@ -24,7 +24,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpGet("tam-tru/danh-sach-tam-tru")]
         public IActionResult GetListTamTru(int index, int limit)
         {
@@ -32,7 +32,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpGet("tam-tru")]
         public IActionResult GetTamTru(int maTamTru)
         {
@@ -40,7 +40,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpPost("tam-tru")]
         public IActionResult CreateTamTru([FromBody] TamTruDto1000 tamTru)
         {
@@ -53,7 +53,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpPut("tam-tru")]
         public IActionResult UpdateTamTru([FromBody] TamTruDto1002 tamTru, int maTamTru)
         {
@@ -66,7 +66,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager)]
         [HttpDelete("tam-tru")]
         public IActionResult DeleteTamTru(int maTamTru, int version)
         {

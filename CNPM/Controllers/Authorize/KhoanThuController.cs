@@ -51,7 +51,7 @@ namespace CNPM.Controllers.Authorize
         
         
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
         [HttpPost("khoan-thu")]
         public IActionResult CreateKhoanThu([FromBody] KhoanThuDto1000 khoanThu)
         {
@@ -64,7 +64,7 @@ namespace CNPM.Controllers.Authorize
         }
         
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
         [HttpPost("thanh-toan")]
         public IActionResult ThanhToan([FromBody] HoaDonDto1000 hoaDon)
         {
@@ -73,7 +73,7 @@ namespace CNPM.Controllers.Authorize
         }
         
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
         [HttpPut("khoan-thu")]
         public IActionResult UpdateKhoanThu([FromBody] KhoanThuDto1002 khoanThu, int maKhoanThu)
         {
@@ -86,7 +86,7 @@ namespace CNPM.Controllers.Authorize
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
-        Roles = Constant.Administrator)]
+        Roles = Constant.Administrator + ", " + Constant.Manager + ", " + Constant.Stocker)]
         [HttpDelete("khoan-thu")]
         public IActionResult DeleteKhoanThu(int maKhoanThu, int version)
         {
