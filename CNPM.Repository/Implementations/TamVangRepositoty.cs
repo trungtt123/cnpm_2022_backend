@@ -14,18 +14,12 @@ using System.ComponentModel.DataAnnotations;
 namespace CNPM.Repository.Implementations
 {
     public class TamVangRepository : ITamVangRepository
-    {
-        private readonly MyDbContext _dbcontext;
-      
-        public TamVangRepository()
-        {
-            _dbcontext = new MyDbContext();
-        }
-        
+    {   
         public List<TamVangEntity> GetListTamVang(int index, int limit)
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 List<TamVangEntity> arr;
                 if (index == 0 && limit == 0)
                 {
@@ -47,6 +41,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 TamVangEntity tamVang = _dbcontext.TamVang.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.MaTamVang == maTamVang).FirstOrDefault();
                 return tamVang;
@@ -60,6 +55,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 _dbcontext.TamVang.Add(tamVang);
 
                 int number_rows = _dbcontext.SaveChanges();
@@ -80,6 +76,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 TamVangEntity tamVang = _dbcontext.TamVang.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.MaNhanKhau == maNhanKhau).FirstOrDefault();
                 if (tamVang == null) return true;
@@ -95,6 +92,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 TamVangEntity tamVang = _dbcontext.TamVang.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.MaNhanKhau == maNhanKhau).FirstOrDefault();
                 if (tamVang == null || tamVang.MaTamVang == maTamVang) return true;
@@ -109,7 +107,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
-
+                var _dbcontext = new MyDbContext();
                 var tamVang = _dbcontext.TamVang.FirstOrDefault(
                     o => o.MaTamVang == newTamVang.MaTamVang && o.Delete == Constant.NOT_DELETE);
 
@@ -136,6 +134,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var tamVang = _dbcontext.TamVang.FirstOrDefault(
                     o => o.MaTamVang == maTamVang && o.Delete == Constant.NOT_DELETE);
                 if (tamVang != null)

@@ -13,12 +13,6 @@ namespace CNPM.Repository.Implementations
 {
     public class UserRepository : IUserRepository
     {
-        private readonly MyDbContext _dbcontext;
-      
-        public UserRepository()
-        {
-            _dbcontext = new MyDbContext();
-        }
         public UserEntity GetUser(string userName)
         {
             try
@@ -38,7 +32,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
-
+                var _dbcontext = new MyDbContext();
                 _dbcontext.Users.Add(userData);
 
                 int number_rows = _dbcontext.SaveChanges();
@@ -54,7 +48,8 @@ namespace CNPM.Repository.Implementations
         public bool DeleteUser(UserEntity userData)
         {
             try
-            {                
+            {
+                var _dbcontext = new MyDbContext();
                 var user = _dbcontext.Users.FirstOrDefault(o => o.UserName == userData.UserName && o.Delete == Constant.NOT_DELETE);
 
                 user.Delete = Constant.DELETE;
@@ -75,7 +70,7 @@ namespace CNPM.Repository.Implementations
            
             try
             {
-
+                var _dbcontext = new MyDbContext();
                 var user = _dbcontext.Users.FirstOrDefault(o => o.UserName == newUserData.UserName && o.Delete == Constant.NOT_DELETE);
 
                 if (user != null)
@@ -103,6 +98,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 List<RoleEntity> arr = _dbcontext.Roles.ToList();
                 return arr;
             }
@@ -115,6 +111,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 List<UserEntity> arr = _dbcontext.Users.Where(o => o.Delete == Constant.NOT_DELETE).ToList();
                 return arr;
             }
@@ -127,6 +124,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var user = _dbcontext.Users.FirstOrDefault(o => o.UserName == userName && o.Delete == Constant.NOT_DELETE);
                 if (user != null)
                 {
@@ -146,6 +144,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var loginInfo = new LoginInfoEntity();
                 loginInfo.AccessToken = accessToken;
                 loginInfo.UserName = userName;
@@ -168,6 +167,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var loginInfo = _dbcontext.LoginInfos.FirstOrDefault(o => o.UserName == userName && o.Delete == Constant.NOT_DELETE && o.AccessToken == accessToken);
                 if (loginInfo != null)
                 {
@@ -188,6 +188,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var loginInfo = _dbcontext.LoginInfos.FirstOrDefault(o => o.UserName == userName && o.Delete == Constant.NOT_DELETE && o.AccessToken == accessToken);
                 if (loginInfo != null)
                 {

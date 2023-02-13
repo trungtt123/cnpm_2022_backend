@@ -15,17 +15,11 @@ namespace CNPM.Repository.Implementations
 {
     public class KhoanThuRepository : IKhoanThuRepository
     {
-        private readonly MyDbContext _dbcontext;
-      
-        public KhoanThuRepository()
-        {
-            _dbcontext = new MyDbContext();
-        }
-        
         public List<KhoanThuEntity> GetListKhoanThu(int index, int limit)
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 List<KhoanThuEntity> arr;
                 if (index == 0 && limit == 0)
                 {
@@ -46,6 +40,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var khoanThu = _dbcontext.KhoanThu.Where(
                     o => o.MaKhoanThu == maKhoanThu && o.Delete == Constant.NOT_DELETE).FirstOrDefault();
                 return khoanThu;
@@ -59,6 +54,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 _dbcontext.KhoanThu.Add(khoanThu);
 
                 int number_rows = _dbcontext.SaveChanges();
@@ -100,6 +96,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var khoanThu = _dbcontext.KhoanThu.Where(
                    o => o.MaKhoanThu == maKhoanThu && o.Delete == Constant.NOT_DELETE).FirstOrDefault();
                 var listHoKhau = _dbcontext.HoKhau.Where(o => o.Delete == Constant.NOT_DELETE).ToList();
@@ -136,6 +133,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var khoanThuTheoHo = _dbcontext.KhoanThuTheoHo.Where(
                    o => o.MaKhoanThu == maKhoanThu && o.Delete == Constant.NOT_DELETE).ToList();
                 
@@ -150,6 +148,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var khoanThuTheoHo = _dbcontext.KhoanThuTheoHo.Where(
                    o => o.MaHoKhau == maHoKhau && o.Delete == Constant.NOT_DELETE).ToList();
 
@@ -165,6 +164,7 @@ namespace CNPM.Repository.Implementations
             try
             {
 
+                var _dbcontext = new MyDbContext();
                 var khoanThu = _dbcontext.KhoanThu.FirstOrDefault(
                     o => o.MaKhoanThu == newKhoanThu.MaKhoanThu && o.Delete == Constant.NOT_DELETE);
 
@@ -192,6 +192,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var khoanThu = _dbcontext.KhoanThu.FirstOrDefault(
                     o => o.MaKhoanThu == maKhoanThu && o.Delete == Constant.NOT_DELETE);
                 if (khoanThu != null)
@@ -215,6 +216,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 _dbcontext.HoaDon.Add(hoaDon);
 
                 int number_rows = _dbcontext.SaveChanges();
@@ -232,6 +234,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var hoaDon = _dbcontext.HoaDon.Where(
                    o => o.MaKhoanThuTheoHo == maKhoanThuTheoHo && o.Delete == Constant.NOT_DELETE).ToList();
 

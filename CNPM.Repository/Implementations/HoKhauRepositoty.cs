@@ -14,17 +14,11 @@ namespace CNPM.Repository.Implementations
 {
     public class HoKhauRepository : IHoKhauRepository
     {
-        private readonly MyDbContext _dbcontext;
-      
-        public HoKhauRepository()
-        {
-            _dbcontext = new MyDbContext();
-        }
-
         public List<HoKhauEntity> GetListHoKhau(int index, int limit)
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 List<HoKhauEntity> arr;
                 if (index == 0 && limit == 0)
                 {
@@ -45,6 +39,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 HoKhauEntity hoKhau = _dbcontext.HoKhau.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.MaHoKhau == maHoKhau).FirstOrDefault();
                 return hoKhau;
@@ -58,6 +53,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 List<LichSuEntity> lichSu = _dbcontext.LichSu.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.MaHoKhau == maHoKhau).ToList();
                 return lichSu;
@@ -71,6 +67,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 if (hoKhau.MaHoKhau == null || hoKhau.MaHoKhau == "")
                 {
                     hoKhau.MaHoKhau = GetRandomMaHoKhau();
@@ -92,6 +89,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 // them nhan khau moi vao ho khau
                 string listMaNhanKhau = "";
                 for (var i = 0; i < danhSachNhanKhau.Count; i++)
@@ -134,6 +132,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 //xoa nhan khau cu trong ho khau
                 var listNhanKhau = _dbcontext.NhanKhau.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.MaHoKhau == maHoKhau).ToList();
@@ -156,6 +155,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 HoKhauEntity hoKhau = _dbcontext.HoKhau.Where(
                     o => o.MaHoKhau == maHoKhau).FirstOrDefault();
                 if (hoKhau == null) return true;
@@ -171,6 +171,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 string maHoKhau;
                 while (true)
                 {
@@ -199,6 +200,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var hoKhau = _dbcontext.HoKhau.FirstOrDefault(
                     o => o.MaHoKhau == newHoKhau.MaHoKhau && o.Delete == Constant.NOT_DELETE);
 
@@ -253,6 +255,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var hoKhau = _dbcontext.HoKhau.FirstOrDefault(
                     o => o.MaHoKhau == maHoKhau && o.Delete == Constant.NOT_DELETE);
                 if (hoKhau != null)

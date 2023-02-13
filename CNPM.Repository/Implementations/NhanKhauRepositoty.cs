@@ -14,17 +14,11 @@ namespace CNPM.Repository.Implementations
 {
     public class NhanKhauRepository : INhanKhauRepository
     {
-        private readonly MyDbContext _dbcontext;
-      
-        public NhanKhauRepository()
-        {
-            _dbcontext = new MyDbContext();
-        }
-        
         public List<NhanKhauEntity> GetListNhanKhau(int index, int limit)
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 List<NhanKhauEntity> arr;
                 if (index == 0 && limit == 0)
                 {
@@ -45,6 +39,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 List<NhanKhauEntity> arr;
                 if (index == 0 && limit == 0)
                 {
@@ -66,6 +61,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 List<NhanKhauEntity> arr;
                 if (index == 0 && limit == 0)
                 {
@@ -86,6 +82,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 List<NhanKhauEntity> arr = _dbcontext.NhanKhau.Where(
                     o => o.Delete == Constant.NOT_DELETE
                     && o.MaHoKhau == maHoKhau
@@ -101,6 +98,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 NhanKhauEntity nhanKhau = _dbcontext.NhanKhau.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.MaNhanKhau == maNhanKhau).FirstOrDefault();
                 return nhanKhau;
@@ -114,7 +112,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
-
+                var _dbcontext = new MyDbContext();
                 _dbcontext.NhanKhau.Add(nhanKhau);
 
                 int number_rows = _dbcontext.SaveChanges();
@@ -135,6 +133,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 NhanKhauEntity nhanKhau = _dbcontext.NhanKhau.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.CanCuocCongDan == canCuocCongDan).FirstOrDefault();
                 if (nhanKhau == null) return true;
@@ -149,7 +148,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
-
+                var _dbcontext = new MyDbContext();
                 var nhanKhau = _dbcontext.NhanKhau.FirstOrDefault(
                     o => o.MaNhanKhau == newNhanKhau.MaNhanKhau && o.Delete == Constant.NOT_DELETE);
 
@@ -182,6 +181,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var nhanKhau = _dbcontext.NhanKhau.FirstOrDefault(
                     o => o.MaNhanKhau == maNhanKhau && o.Delete == Constant.NOT_DELETE);
                 if (nhanKhau != null)

@@ -14,17 +14,11 @@ namespace CNPM.Repository.Implementations
 {
     public class TamTruRepository : ITamTruRepository
     {
-        private readonly MyDbContext _dbcontext;
-      
-        public TamTruRepository()
-        {
-            _dbcontext = new MyDbContext();
-        }
-        
         public List<TamTruEntity> GetListTamTru(int index, int limit)
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 List<TamTruEntity> arr;
                 if (index == 0 && limit == 0)
                 {
@@ -46,6 +40,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 TamTruEntity tamTru = _dbcontext.TamTru.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.MaTamTru == maTamTru).FirstOrDefault();
                 return tamTru;
@@ -59,7 +54,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
-
+                var _dbcontext = new MyDbContext();
                 _dbcontext.TamTru.Add(tamTru);
 
                 int number_rows = _dbcontext.SaveChanges();
@@ -80,6 +75,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 TamTruEntity tamTru = _dbcontext.TamTru.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.CanCuocCongDan == canCuocCongDan).FirstOrDefault();
                 if (tamTru == null) return true;
@@ -94,6 +90,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 TamTruEntity tamTru = _dbcontext.TamTru.Where(
                     o => o.Delete == Constant.NOT_DELETE && o.CanCuocCongDan == canCuocCongDan).FirstOrDefault();
                 if (tamTru == null || tamTru.MaTamTru == maTamTru) return true;
@@ -108,7 +105,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
-
+                var _dbcontext = new MyDbContext();
                 var tamTru = _dbcontext.TamTru.FirstOrDefault(
                     o => o.MaTamTru == newTamTru.MaTamTru && o.Delete == Constant.NOT_DELETE);
 
@@ -136,6 +133,7 @@ namespace CNPM.Repository.Implementations
         {
             try
             {
+                var _dbcontext = new MyDbContext();
                 var tamTru = _dbcontext.TamTru.FirstOrDefault(
                     o => o.MaTamTru == maTamTru && o.Delete == Constant.NOT_DELETE);
                 if (tamTru != null)
