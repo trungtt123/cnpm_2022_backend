@@ -193,7 +193,7 @@ namespace CNPM.Service.Implementations
                 userEntity = _mapper.Map<UserDto1005, UserEntity>(user);
                 userDto1003 = _mapper.Map<UserDto1005, UserDto1003>(user);
 
-                string password = Helpers.RandomString(Constant.RANDOM_DEFAULT_PASSWORD_LENGTH);
+                string password = "123456";
 
                 userEntity.Password = Helpers.GetHashPassword(password);
                 userEntity.UserUpdate = user.UserCreate;
