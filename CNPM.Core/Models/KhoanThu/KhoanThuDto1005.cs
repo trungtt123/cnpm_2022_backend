@@ -13,6 +13,9 @@ namespace CNPM.Core.Models.KhoanThu
 {
     public class KhoanThuDto1005 // các khoản đã nộp của hộ
     {
+        [JsonProperty("maHoKhau")]
+        public string MaHoKhau { get; set; }
+
         [JsonProperty("maKhoanThu")]
         public int MaKhoanThu { get; set; }
 

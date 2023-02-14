@@ -211,6 +211,7 @@ namespace CNPM.Service.Implementations
                 {
                     KhoanThuEntity khoanThuEntity = _khoanThuRepository.GetKhoanThu(khoanThuTheoHo.MaKhoanThu);
                     KhoanThuDto1005 khoanThu = new KhoanThuDto1005();
+                    khoanThu.MaHoKhau = maHoKhau;
                     khoanThu.MaKhoanThu = khoanThuEntity.MaKhoanThu;
                     khoanThu.TenKhoanThu = khoanThuEntity.TenKhoanThu;
                     khoanThu.SoTien = khoanThuTheoHo.SoTien;

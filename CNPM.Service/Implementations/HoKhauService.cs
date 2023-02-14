@@ -196,11 +196,11 @@ namespace CNPM.Service.Implementations
                     reason = Constant.MA_HO_KHAU_NOT_EXIST
                 });
 
-                if (hoKhau.Version != version) return new BadRequestObjectResult(new
+                /*if (hoKhau.Version != version) return new BadRequestObjectResult(new
                 {
                     message = Constant.DELETE_HO_KHAU_FAILED,
                     reason = Constant.DATA_UPDATED_BEFORE
-                });
+                });*/
                 // xóa tất cả nhân khẩu trong hộ khẩu
 
                 bool remove = _hoKhauRepository.RemoveNhanKhauFromHoKhau(maHoKhau, userName);
