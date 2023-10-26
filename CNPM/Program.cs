@@ -74,6 +74,7 @@ builder.Services.AddSingleton<ITamTruService, TamTruService>();
 builder.Services.AddSingleton<ITamTruRepository, TamTruRepository>();
 builder.Services.AddSingleton<ITamVangService, TamVangService>();
 builder.Services.AddSingleton<ITamVangRepository, TamVangRepository>();
+builder.Services.AddSingleton<IXeRepository, XeRepository>();
 
 builder.Services.AddHttpClient();
 

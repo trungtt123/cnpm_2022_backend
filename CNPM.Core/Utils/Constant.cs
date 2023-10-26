@@ -120,6 +120,10 @@
         public const string UPDATE_HO_KHAU_FAILED = "Cập nhật thông tin hộ khẩu thất bại";
         public const string MA_HO_KHAU_NOT_EXIST = "Mã hộ khẩu không tồn tại";
 
+        public const string ADD_XE_SUCCESSFULLY = "Thêm xe thành công";
+        public const string ADD_XE_FAILED = "Thêm xe thất bại";
+        public const string XE_EXISTED = "Xe đã tồn tại";
+
         public const string DELETE_NHAN_KHAU_SUCCESSFULLY = "Xóa thông tin nhân khẩu thành công";
         public const string DELETE_NHAN_KHAU_FAILED = "Xoá thông tin nhân khẩu thất bại";
 
@@ -146,7 +150,6 @@
         public const string Administrator = "1";
         public const string Manager = "2";
         public const string Stocker = "3";
-
 
 
         public const string CONNECTION_STRING = @"
