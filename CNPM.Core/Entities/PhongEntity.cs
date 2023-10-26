@@ -13,10 +13,10 @@ namespace CNPM.Core.Entities
         [StringLength(100)]
         public string TenPhong { get; set; }
 
-        [Required]
-        public int Tang { get; set; }
+        public string? Tang { get; set; }
 
         [Required]
+        [Range(0, 1000)]
         public double DienTich { get; set; }
 
         public string? MaHoKhau { get; set; }

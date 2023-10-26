@@ -16,27 +16,23 @@ namespace CNPM.Core.Models.Phong
 {
     public class PhongDto1001 // response 
     {
+        [JsonProperty("maPhong")]
+        public int MaPhong { get; set; }
+
+        [JsonProperty("tenPhong")]
+        public string TenPhong { get; set; }
+
+        [JsonProperty("tang")]
+        public string Tang { get; set; }
+
+        [JsonProperty("dienTich")]
+        public double DienTich { get; set; }
 
         [JsonProperty("maHoKhau")]
         public string MaHoKhau { get; set; }
 
-        [JsonProperty("soThanhVien")]
-        public int SoThanhVien { get; set; }
-
-        [JsonProperty("diaChiThuongTru")]
-        public string DiaChiThuongTru { get; set; }
-
-        [JsonProperty("noiCap")]
-        public string NoiCap { get; set; }
-
-        [JsonProperty("ngayCap")]
-        public DateTime NgayCap { get; set; }
-
-        [JsonProperty("danhSachNhanKhau")]
-        public List<NhanKhauDto1001> DanhSachNhanKhau { get; set;}
-
-        [JsonProperty("lichSu")]
-        public List<LichSuDto1000> LichSu { get; set; } 
+        [JsonProperty("moTa")]
+        public string MoTa { get; set; }
 
         [JsonProperty("createTime")]
         public DateTime CreateTime { get; set; }

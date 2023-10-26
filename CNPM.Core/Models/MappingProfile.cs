@@ -8,6 +8,7 @@ using CNPM.Core.Models.TamTru;
 using CNPM.Core.Models.TamVang;
 using CNPM.Core.Models.HoaDon;
 using CNPM.Core.Models.Xe;
+using CNPM.Core.Models.Phong;
 
 namespace CNPM.Core.Models
 {
@@ -56,6 +57,11 @@ namespace CNPM.Core.Models
             CreateMap<XeEntity, XeDto1001>();
             CreateMap<XeDto1002, XeEntity>();
             CreateMap<XeEntity, XeDto1003>();
+
+            CreateMap<PhongDto1000, PhongEntity>();
+            CreateMap<PhongEntity, PhongDto1001>();
+            CreateMap<PhongDto1002, PhongEntity>();
+            CreateMap<PhongEntity, PhongDto1003>();
 
             CreateMap<RoleEntity, RoleDto>();
         }

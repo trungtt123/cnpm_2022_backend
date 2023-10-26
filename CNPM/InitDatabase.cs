@@ -70,7 +70,7 @@ namespace CNPM
                 new PhongEntity
                 {
                     TenPhong = "P501",
-                    Tang = 5,
+                    Tang = "5",
                     DienTich = 40,
                     CreateTime = today,
                     UpdateTime = today,
@@ -82,7 +82,7 @@ namespace CNPM
                 new PhongEntity
                 {
                     TenPhong = "P502",
-                    Tang = 5,
+                    Tang = "5",
                     DienTich = 50,
                     CreateTime = today,
                     UpdateTime = today,
@@ -94,7 +94,7 @@ namespace CNPM
                 new PhongEntity
                 {
                     TenPhong = "P503",
-                    Tang = 5,
+                    Tang = "5",
                     DienTich = 55,
                     CreateTime = today,
                     UpdateTime = today,

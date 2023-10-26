@@ -1,8 +1,10 @@
-﻿using CNPM.Core.Utils;
+﻿using CNPM.Core.Entities;
+using CNPM.Core.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,23 +13,25 @@ namespace CNPM.Core.Models.Phong
 {
     public class PhongDto1002 // body update
     {
-        [MaxLength(200)]
         [Required]
-        [JsonProperty("diaChiThuongTru")]
-        public string DiaChiThuongTru { get; set; }
-
-        [MaxLength(200)]
-        [Required]
-        [JsonProperty("noiCap")]
-        public string NoiCap { get; set; }
+        [MaxLength(100)]
+        [JsonProperty("tenPhong")]
+        public string TenPhong { get; set; }
 
         [Required]
-        [JsonProperty("ngayCap")]
-        public DateTime NgayCap { get; set; }
+        [JsonProperty("tang")]
+        public string Tang { get; set; }
 
         [Required]
-        [JsonProperty("danhSachNhanKhau")]
-        public List<int> DanhSachNhanKhau { get; set; }
+        [Range(0, 1000)]
+        [JsonProperty("dienTich")]
+        public double DienTich { get; set; }
+
+        [JsonProperty("maHoKhau")]
+        public string? MaHoKhau { get; set; }
+
+        [JsonProperty("moTa")]
+        public string? MoTa { get; set; }
 
         [JsonProperty("version")]
         public int Version { get; set; }

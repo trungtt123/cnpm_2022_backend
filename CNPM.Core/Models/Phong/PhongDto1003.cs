@@ -18,7 +18,7 @@ namespace CNPM.Core.Models.Phong
         public string TenPhong { get; set; }
 
         [JsonProperty("tang")]
-        public int Tang { get; set; }
+        public string Tang { get; set; }
 
         [JsonProperty("dienTich")]
         public double DienTich { get; set; }
